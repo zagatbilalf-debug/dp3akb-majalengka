@@ -1,0 +1,294 @@
+/* ===== Wrapper Utama ===== */
+.uptd-page-wrapper {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== Hero Section (Diperbaiki padding-top agar tidak tertutup navbar) ===== */
+.uptd-hero {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    padding: 160px 20px 80px; /* Ditingkatkan dari 120px ke 160px */
+    margin-bottom: 60px;
+    color: #fff;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255, 71, 126, 0.2);
+    color: #ff758c;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 71, 126, 0.3);
+}
+
+.hero-title {
+    font-size: 46px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-emergency {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #111827;
+}
+
+.btn-primary:hover {
+    background: #f3f4f6;
+    transform: translateY(-3px);
+}
+
+.btn-emergency {
+    background: #e11d48;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+}
+
+.btn-emergency:hover {
+    background: #be123c;
+    box-shadow: 0 15px 30px rgba(225, 29, 72, 0.6);
+    transform: translateY(-3px);
+}
+
+/* ===== Grid Layanan ===== */
+.section-header {
+    margin-bottom: 50px;
+    text-align: left; /* Sesuaikan dengan kebutuhan perataan */
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: #6b7280;
+    max-width: 700px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.layanan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.layanan-card {
+    background: #fff;
+    padding: 35px 30px;
+    border-radius: 16px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.layanan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #ff477e;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: #fff0f3;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+.layanan-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.layanan-card p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 70px 0;
+}
+
+/* ===== Alur Pengaduan (Accordion) ===== */
+.alur-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.alur-text h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 15px;
+}
+
+.alur-text p {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.alur-img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.alur-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.accordion-item {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.accordion-item.active {
+    border-color: #ff477e;
+    box-shadow: 0 10px 15px -3px rgba(255, 71, 126, 0.1);
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    cursor: pointer;
+    text-align: left;
+}
+
+.step-number {
+    color: #ff477e;
+    font-size: 14px;
+    margin-right: 15px;
+    background: #fff0f3;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.icon-toggle {
+    margin-left: auto;
+    font-size: 16px;
+    color: #9ca3af;
+    transition: transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accordion-item.active .icon-toggle {
+    transform: rotate(180deg);
+    color: #ff477e;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    background: #fff;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 200px;
+    padding: 0 24px 24px 75px;
+}
+
+.accordion-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* ===== Responsif ===== */
+@media (max-width: 992px) {
+    .alur-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .hero-title {
+        font-size: 36px;
+    }
+    .uptd-hero {
+        padding: 130px 20px 60px; /* Menyesuaikan di mobile */
+    }
+    .accordion-item.active .accordion-content {
+        padding-left: 24px;
+    }
+}

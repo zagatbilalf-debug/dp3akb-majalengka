@@ -1,0 +1,382 @@
+/* ==========================================================================
+   berita.css — Halaman Publik Berita (Index & Show)
+   ========================================================================== */
+
+:root {
+    --berita-pink: #db2777;
+    --berita-pink-dark: #9d174d;
+    --berita-text: #1e2a3a;
+    --berita-muted: #64748b;
+    --berita-border: #e6e9ee;
+    --berita-bg-soft: #fdf2f8;
+}
+
+.container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- Filter & Search ---------- */
+.berita-filter-section {
+    padding: 32px 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.berita-search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 420px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 11px 16px;
+    border: 1px solid var(--berita-border);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--berita-pink);
+}
+
+.btn-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 18px;
+    background: var(--berita-pink);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-search:hover {
+    background: var(--berita-pink-dark);
+}
+
+.kategori-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.kategori-pill {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #f4f6f9;
+    color: var(--berita-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.kategori-pill:hover {
+    background: var(--berita-bg-soft);
+    color: var(--berita-pink);
+}
+
+.kategori-pill.active {
+    background: var(--berita-pink);
+    color: #fff;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--berita-border);
+    margin: 28px 0 32px;
+}
+
+/* ---------- Grid Berita ---------- */
+.berita-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.berita-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.berita-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(219, 39, 119, 0.14);
+}
+
+.berita-card-img {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #f4f6f9;
+}
+
+.berita-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.berita-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(219, 39, 119, 0.92);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.berita-card-body {
+    padding: 16px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.berita-card-date {
+    font-size: 12px;
+    color: var(--berita-muted);
+    font-weight: 600;
+}
+
+.berita-card-title {
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--berita-text);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.berita-empty {
+    text-align: center;
+    padding: 64px 20px;
+    color: var(--berita-muted);
+}
+
+.berita-empty .icon-box {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.berita-empty h3 {
+    color: var(--berita-text);
+    margin-bottom: 6px;
+}
+
+.berita-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 60px;
+}
+
+/* ---------- Halaman Detail (show) ---------- */
+.detail-info-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 24px;
+}
+
+.detail-kategori-badge {
+    background: var(--berita-bg-soft);
+    color: var(--berita-pink);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+
+.detail-date {
+    font-size: 13px;
+    color: var(--berita-muted);
+    font-weight: 600;
+}
+
+.berita-detail-layout {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr;
+    gap: 40px;
+    padding: 40px 0 60px;
+    align-items: start;
+}
+
+.berita-detail-content {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.detail-cover-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    max-height: 420px;
+    object-fit: cover;
+}
+
+.detail-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--berita-text);
+}
+
+.detail-body p {
+    margin-bottom: 16px;
+}
+
+.detail-body img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 24px;
+    padding: 10px 18px;
+    background: var(--berita-bg-soft);
+    color: var(--berita-pink);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-back:hover {
+    background: #fbe0ec;
+}
+
+/* ---------- Sidebar Berita Lainnya ---------- */
+.berita-detail-sidebar {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--berita-text);
+}
+
+.sidebar-berita-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--berita-border);
+}
+
+.sidebar-berita-item:last-child {
+    border-bottom: none;
+}
+
+.sidebar-berita-img {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f4f6f9;
+}
+
+.sidebar-berita-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-berita-text h4 {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--berita-text);
+    margin-bottom: 4px;
+}
+
+.sidebar-berita-text span {
+    font-size: 11.5px;
+    color: var(--berita-muted);
+}
+
+.sidebar-empty {
+    font-size: 13px;
+    color: var(--berita-muted);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 992px) {
+    .berita-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .berita-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .berita-detail-sidebar {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .detail-info-bar {
+        padding-top: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .berita-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .berita-search-form {
+        max-width: none;
+    }
+
+    .berita-detail-content {
+        padding: 18px;
+    }
+
+    .berita-detail-sidebar {
+        padding: 16px;
+    }
+}

@@ -1,0 +1,294 @@
+/* ===========================================================
+   RESET & BASE
+=========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+    background-color: #f4f6f9;
+    color: #1e2a3a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ===========================================================
+   AREA KONTEN HALAMAN
+=========================================================== */
+.content-wrapper {
+    padding: 0 24px 32px;
+}
+
+/* ===========================================================
+   ALERT / FLASH MESSAGE
+=========================================================== */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 16px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    position: relative;
+}
+
+.alert i {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.alert-success {
+    background-color: #e7f7ee;
+    color: #1e8a4c;
+    border: 1px solid #b9ebce;
+}
+
+.alert-error {
+    background-color: #fdecec;
+    color: #c0392b;
+    border: 1px solid #f5c2c0;
+}
+
+.alert-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.alert-close:hover {
+    opacity: 1;
+}
+
+/* ===========================================================
+   KARTU (CARD) - dipakai di hampir semua halaman
+=========================================================== */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ===========================================================
+   TABEL DATA
+=========================================================== */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.data-table th,
+table.data-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #eef0f3;
+    white-space: nowrap;
+}
+
+table.data-table th {
+    background-color: #f8f9fb;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+table.data-table tbody tr:hover {
+    background-color: #f9fafc;
+}
+
+/* ===========================================================
+   BADGE STATUS
+=========================================================== */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.badge-success { background-color: #e7f7ee; color: #1e8a4c; }
+.badge-warning { background-color: #fff6e0; color: #b8860b; }
+.badge-danger  { background-color: #fdecec; color: #c0392b; }
+.badge-info    { background-color: #e8f0fe; color: #2f6fed; }
+
+/* ===========================================================
+   TOMBOL UMUM
+=========================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    min-height: 38px; /* touch target layak */
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn-primary { background-color: #2f6fed; color: #fff; }
+.btn-primary:hover { background-color: #245bd1; }
+
+.btn-danger { background-color: #e74c3c; color: #fff; }
+.btn-danger:hover { background-color: #c0392b; }
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #d7dce3;
+    color: #4a5568;
+}
+.btn-outline:hover { background-color: #f4f6f9; }
+
+/* ===========================================================
+   MAIN CONTENT OFFSET — mengikuti lebar sidebar fixed
+=========================================================== */
+.main-content {
+    margin-left: var(--sidebar-width, 260px);
+    min-height: 100vh;
+    min-height: 100dvh;
+    transition: margin-left 0.3s ease;
+}
+
+/* Saat sidebar di-collapse (ikon-only) */
+.sidebar.collapsed ~ .main-content {
+    margin-left: var(--sidebar-collapsed-width, 84px);
+}
+
+/* Mobile/tablet: sidebar jadi overlay/drawer, konten full width.
+   Breakpoint ini SENGAJA disamakan dengan breakpoint drawer di sidebar.css (992px) —
+   kalau breakpoint sidebar diubah, ubah juga di sini supaya tetap sinkron. */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+/* ---------- Tablet kecil (768px ke bawah) ---------- */
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 18px 28px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    table.data-table th,
+    table.data-table td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+}
+
+/* ---------- HP (576px ke bawah) ---------- */
+@media (max-width: 576px) {
+    body {
+        font-size: 13.5px;
+    }
+
+    .content-wrapper {
+        padding: 0 14px 24px;
+    }
+
+    .card {
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-header .btn {
+        width: 100%;
+    }
+
+    .alert {
+        padding: 11px 14px;
+        font-size: 13px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 13.5px;
+    }
+
+    table.data-table th,
+    table.data-table td {
+        padding: 9px 10px;
+        font-size: 12.5px;
+    }
+}
+
+/* ---------- Hormati preferensi reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .main-content,
+    .btn {
+        transition: none !important;
+    }
+}

@@ -1,0 +1,270 @@
+/* ===========================================================
+   TOMBOL (self-contained)
+=========================================================== */
+.dokumen-form-actions .btn,
+.dokumen-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+    border-radius: 8px;
+}
+
+.dokumen-form-actions .btn-primary {
+    background-color: #2f6fed !important;
+    color: #fff !important;
+    padding: 10px 26px;
+    box-shadow: 0 3px 10px rgba(47, 111, 237, 0.25);
+}
+
+.dokumen-form-actions .btn-primary:hover {
+    background-color: #245bd1 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(47, 111, 237, 0.32);
+}
+
+.dokumen-form-actions .btn-outline,
+.dokumen-actions .btn-outline {
+    background-color: transparent !important;
+    border: 1.5px solid #d7dce3 !important;
+    color: #4a5568 !important;
+    padding: 10px 22px;
+}
+
+.dokumen-actions .btn-outline {
+    padding: 7px 12px !important;
+    font-size: 13px;
+}
+
+.dokumen-form-actions .btn-outline:hover,
+.dokumen-actions .btn-outline:hover {
+    background-color: #f4f6f9 !important;
+}
+
+.dokumen-actions .btn-danger {
+    background-color: #e74c3c !important;
+    color: #fff !important;
+    padding: 7px 12px !important;
+    font-size: 13px;
+}
+
+.dokumen-actions .btn-danger:hover {
+    background-color: #c0392b !important;
+}
+
+.dokumen-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* ===========================================================
+   FILE LINK (index)
+=========================================================== */
+.dokumen-file-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #2f6fed;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.dokumen-file-link:hover {
+    text-decoration: underline;
+}
+
+.dokumen-pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ===========================================================
+   CARD WRAPPER
+=========================================================== */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 28px 30px;
+}
+
+/* ===========================================================
+   FORM
+=========================================================== */
+.dokumen-form .form-group {
+    margin-bottom: 22px;
+}
+
+.dokumen-form label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+    letter-spacing: 0.2px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.dokumen-form .form-control {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #e2e6ec;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #fbfcfd;
+    color: #1f2937;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.dokumen-form select.form-control {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.dokumen-form .form-control:hover {
+    border-color: #cbd5e0;
+}
+
+.dokumen-form .form-control:focus {
+    outline: none;
+    border-color: #2f6fed;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.12);
+}
+
+.dokumen-form textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.dokumen-form input[type="date"] {
+    cursor: pointer;
+    color-scheme: light;
+}
+
+.dokumen-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(46%) sepia(65%) saturate(2476%) hue-rotate(206deg) brightness(97%) contrast(94%);
+    cursor: pointer;
+}
+
+.dokumen-form input[type="file"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px dashed #cbd5e0;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    font-size: 13.5px;
+    color: #4a5568;
+    cursor: pointer;
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.dokumen-form input[type="file"]:hover {
+    border-color: #2f6fed;
+    background-color: #f0f5ff;
+}
+
+.dokumen-form input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    margin-right: 14px;
+    border: none;
+    border-radius: 7px;
+    background-color: #2f6fed;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.18s ease;
+}
+
+.dokumen-form input[type="file"]::file-selector-button:hover {
+    background-color: #245bd1;
+}
+
+.dokumen-file-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.dokumen-filename-preview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background-color: #eef6ff;
+    border: 1px solid #d6e6fd;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #2f6fed;
+    font-weight: 500;
+}
+
+.dokumen-current-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4a5568;
+}
+
+.dokumen-current-file a {
+    color: #2f6fed;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.dokumen-current-file a:hover {
+    text-decoration: underline;
+}
+
+.form-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 12.5px;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.dokumen-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 14px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #eef0f3;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}

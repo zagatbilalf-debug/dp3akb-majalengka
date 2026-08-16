@@ -1,0 +1,518 @@
+/* ==========================================================================
+   sidebar.css — DP3AKB Admin Sidebar (Pink Theme) v3 — Responsive
+   ========================================================================== */
+
+:root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 84px;
+
+    --sidebar-pink: #7c214a;
+    --sidebar-pink-dark: #9d174d;
+    --sidebar-pink-light: #f9a8d4;
+    --sidebar-pink-soft: rgba(255, 255, 255, 0.14);
+
+    --sidebar-text: rgba(255, 255, 255, 0.85);
+    --sidebar-text-muted: rgba(255, 255, 255, 0.55);
+    --sidebar-active-bg: #ffffff;
+    --sidebar-active-text: #db2777;
+}
+
+.sidebar * {
+    box-sizing: border-box;
+}
+
+/* ---------- Container utama ---------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    height: 100dvh; /* aman untuk mobile browser bar */
+    width: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, var(--sidebar-pink) 0%, var(--sidebar-pink-dark) 100%);
+    border-radius: 0 24px 24px 0;
+    box-shadow: 6px 0 24px rgba(219, 39, 119, 0.25);
+    z-index: 1000;
+    transition: width 0.3s ease, transform 0.3s ease;
+    overflow: visible; /* supaya tombol toggle & tooltip bisa keluar dari batas sidebar */
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
+/* ---------- Brand / Logo ---------- */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 20px;
+    background: #ffffff;
+    position: relative;
+    border-radius: 0 20px 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sidebar-logo-full {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
+.sidebar-logo-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.2s ease, width 0.2s ease;
+}
+
+.sidebar.collapsed .sidebar-logo-wrap {
+    width: 0;
+    opacity: 0;
+    flex: 0;
+    pointer-events: none;
+}
+
+.sidebar.collapsed .sidebar-brand {
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* Bungkus logo supaya fallback inisial bisa nempel di belakangnya */
+/* Bungkus logo supaya fallback inisial bisa nempel di belakangnya */
+.sidebar-logo-wrap {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Fallback teks "D" jika logo gagal dimuat */
+.sidebar-logo-wrap::before {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    z-index: 0;
+}
+
+.sidebar-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    overflow: hidden;
+    white-space: normal; /* biar subtitle bisa turun baris kalau kepanjangan, bukan kepotong */
+    min-width: 0;
+    flex: 1;
+}
+
+.sidebar-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    white-space: nowrap; /* judul utama tetap satu baris */
+}
+
+.sidebar-subtitle {
+    color: var(--sidebar-text-muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-brand-text {
+    display: none;
+}
+
+/* Tombol toggle — bulat, mengambang di tepi kanan sidebar */
+.sidebar-toggle-btn {
+    position: absolute;
+    top: 28px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    color: var(--sidebar-pink);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 20;
+}
+
+.sidebar-toggle-btn:hover {
+    background: var(--sidebar-pink-light);
+    transform: scale(1.1);
+}
+
+.sidebar-toggle-btn i {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed .sidebar-toggle-btn i {
+    transform: rotate(180deg);
+}
+
+/* ---------- Navigasi ---------- */
+.sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: visible;
+    padding: 16px 14px;
+    -webkit-overflow-scrolling: touch; /* momentum scroll di iOS */
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+.sidebar-item a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sidebar-item a i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar-item a:hover {
+    background: var(--sidebar-pink-soft);
+    color: #ffffff;
+}
+
+/* Item aktif -> pill putih melayang + aksen garis kiri tipis */
+.sidebar-item.active a {
+    background: var(--sidebar-active-bg);
+    color: var(--sidebar-active-text);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-item.active a i {
+    color: var(--sidebar-active-text);
+}
+
+.sidebar-item.active::before {
+    content: "";
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 22px;
+    background: #ffffff;
+    border-radius: 0 4px 4px 0;
+}
+
+.sidebar.collapsed .sidebar-text {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-item a {
+    justify-content: center;
+    padding: 12px 0;
+}
+
+.sidebar.collapsed .sidebar-item.active::before {
+    left: -14px;
+}
+
+/* Tooltip saat collapsed + hover (desktop only, lihat media query di bawah) */
+.sidebar.collapsed .sidebar-item a:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: calc(100% + 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1e2a3a;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    z-index: 50;
+    pointer-events: none;
+}
+
+/* Panah kecil tooltip */
+.sidebar.collapsed .sidebar-item a:hover::before {
+    content: "";
+    position: absolute;
+    left: calc(100% + 6px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #1e2a3a;
+    z-index: 50;
+}
+
+/* ---------- Footer / Logout ---------- */
+.sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sidebar-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    color: var(--sidebar-text);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-logout-btn i {
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-logout-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+.sidebar.collapsed .sidebar-logout-btn {
+    justify-content: center;
+    padding: 12px 0;
+}
+
+/* ---------- Overlay (mobile) ---------- */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(157, 23, 77, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------- Tombol toggle mobile ---------- */
+.sidebar-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--sidebar-pink);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(219, 39, 119, 0.35);
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* ---------- Tablet besar (992px ke bawah): sidebar jadi drawer ---------- */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        border-radius: 0;
+        width: var(--sidebar-width); /* selalu lebar penuh saat jadi drawer, abaikan .collapsed */
+    }
+
+    .sidebar.collapsed {
+        width: var(--sidebar-width);
+    }
+
+    .sidebar.collapsed .sidebar-brand-text,
+    .sidebar.collapsed .sidebar-text {
+        display: flex;
+    }
+
+    .sidebar.collapsed .sidebar-item a {
+        justify-content: flex-start;
+        padding: 12px 16px;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .sidebar-mobile-toggle {
+        display: flex;
+    }
+
+    .sidebar-toggle-btn {
+        display: none;
+    }
+
+    /* Tooltip collapsed tidak relevan lagi di mode drawer */
+    .sidebar.collapsed .sidebar-item a:hover::after,
+    .sidebar.collapsed .sidebar-item a:hover::before {
+        content: none;
+    }
+}
+
+/* ---------- Tablet kecil / phablet (768px ke bawah) ---------- */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    .sidebar-mobile-toggle {
+        top: 12px;
+        left: 12px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .sidebar-brand {
+        padding: 20px 16px;
+    }
+}
+
+/* ---------- HP kecil (480px ke bawah) ---------- */
+@media (max-width: 480px) {
+    :root {
+        --sidebar-width: 84vw; /* drawer hampir selebar layar, tapi masih sisakan ruang overlay */
+    }
+
+    .sidebar {
+        border-radius: 0 16px 16px 0;
+        box-shadow: 4px 0 20px rgba(219, 39, 119, 0.3);
+    }
+
+    .sidebar-brand {
+        padding: 18px 14px;
+    }
+
+    .sidebar-title {
+        font-size: 14px;
+    }
+
+    .sidebar-nav {
+        padding: 12px 10px;
+    }
+
+    .sidebar-item a {
+        padding: 11px 14px;
+        font-size: 13.5px;
+    }
+
+    .sidebar-footer {
+        padding: 12px;
+    }
+}
+
+/* ---------- HP sangat kecil (360px ke bawah) ---------- */
+@media (max-width: 360px) {
+    :root {
+        --sidebar-width: 88vw;
+    }
+
+    .sidebar-mobile-toggle {
+        top: 10px;
+        left: 10px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ---------- Landscape HP pendek (tinggi layar terbatas) ---------- */
+@media (max-height: 480px) and (max-width: 992px) {
+    .sidebar-brand {
+        padding: 14px 16px;
+    }
+
+    .sidebar-nav {
+        padding: 10px 14px;
+    }
+
+    .sidebar-item a {
+        padding: 9px 16px;
+    }
+
+    .sidebar-footer {
+        padding: 10px 16px;
+    }
+}
+
+/* ---------- Hormati preferensi reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .sidebar,
+    .sidebar-toggle-btn i,
+    .sidebar-overlay,
+    .sidebar-item a {
+        transition: none !important;
+    }
+}

@@ -1,0 +1,134 @@
+.alur-page-wrapper {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #333333;
+    background-color: #f8fafc;
+    padding-bottom: 80px;
+}
+
+.container-custom {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.alur-container-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 50px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .alur-container-box {
+        padding: 30px 20px;
+    }
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.section-desc {
+    font-size: 15px;
+    color: #64748b;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.steps-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.step-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+}
+
+.step-badge {
+    background: #B8005F;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.step-content p {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.cta-box {
+    background: #ffeffa;
+    border: 1px solid #febfd0;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.cta-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #B8005F;
+    margin-bottom: 8px;
+}
+
+.cta-box p {
+    font-size: 14px;
+    color: #B8005F;
+    margin-bottom: 20px;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: #B8005F;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-cta:hover {
+    background: #B8005F;
+}

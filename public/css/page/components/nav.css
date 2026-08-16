@@ -1,0 +1,588 @@
+/* ===== Reset & Base Styling ===== */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+}
+
+body { 
+    background: #f8fafc; 
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Navbar Utama ===== */
+nav.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245, 245, 247, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-height: 100px;
+    padding: 14px 30px;
+    font-size: 13px;
+    color: #1d1d1f;
+
+    position: fixed;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 15px;
+    border-radius: 18px;
+
+    z-index: 3000;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    
+    transition: min-height 0.2s ease, padding 0.2s ease;
+}
+
+nav.navbar.scrolled {
+    min-height: 65px;
+    padding: 8px 24px;
+    background: rgba(245, 245, 247, 0.98);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+nav.navbar a,
+.dropdown a,
+.dropdown-link-large {
+    text-decoration: none;
+    color: #1d1d1f;
+    opacity: 0.85;
+    white-space: nowrap;
+    transition: none !important; 
+    transform: none !important;
+}
+
+nav.navbar a:hover,
+.dropdown a:hover {
+    opacity: 1;
+}
+
+/* ===== Dropdown Panel (Desktop) ===== */
+.dropdown {
+    display: flex;
+    gap: 60px;
+    position: absolute;
+    top: calc(100% + 12px); 
+    left: 0; 
+    right: 0; 
+    width: 100%; 
+    box-sizing: border-box;
+    
+    background: rgba(245, 245, 247, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    
+    padding: 24px 48px 32px 48px;
+    z-index: 999;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.15s ease, 
+                visibility 0.2s ease;
+}
+
+.nav-item:hover .dropdown,
+.nav-item.dropdown-open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Logo & Nama Instansi */
+nav.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0; 
+    min-width: 0; 
+}
+
+.logo-img {
+    height: 55px; 
+    width: auto;
+    object-fit: contain;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+.logo-img-full {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+nav.navbar.scrolled .logo-img {
+    height: 38px; 
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; 
+}
+
+.brand-line-1 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1d1d1f;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.brand-line-2 {
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Wadah Menu Tengah */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    transition: gap 0.3s ease;
+}
+
+nav.navbar.scrolled .nav-links {
+    gap: 24px;
+}
+
+nav.navbar.scrolled .nav-links a {
+    font-size: 14px;
+}
+
+.nav-item {
+    position: static; 
+    display: flex;
+    align-items: center;
+    height: 100%;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+/* Font menu utama (Profile, Dokumen dan Publikasi, PPID, dst) dibuat Bold
+   supaya kesannya lebih tegas — mendekati referensi navbar Gojek (yang
+   aslinya pakai Maison Neue, font berbayar; di sini dipakai Plus Jakarta
+   Sans yang sudah ter-load di seluruh halaman dengan bobot Bold). */
+.nav-item > a {
+    font-weight: 500;
+}
+
+/* Sembunyikan tombol login sidebar khusus di mode Desktop */
+.mobile-login-container {
+    display: none !important;
+}
+
+/* Tombol Hamburger */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    z-index: 3500;
+    flex-shrink: 0;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #1d1d1f;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Backdrop Mobile */
+.menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1998;
+}
+.menu-backdrop.active {
+    display: block;
+}
+
+/* Dropdown Column */
+.dropdown-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 180px;
+}
+
+.dropdown-category {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6e6e73;
+    margin-bottom: 4px;
+}
+
+.dropdown-link-large {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d1d1f !important;
+    text-decoration: none;
+    line-height: 1.2;
+    opacity: 0.9 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-link-large:hover {
+    opacity: 1 !important;
+    transform: translateX(2px);
+}
+
+.dropdown a:not(.dropdown-link-large) {
+    display: block;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1d1d1f;
+    text-decoration: none;
+    opacity: 0.8;
+    white-space: nowrap;
+    background: transparent !important;
+    transition: opacity 0.2s ease;
+}
+
+.dropdown a:not(.dropdown-link-large):hover {
+    opacity: 1;
+}
+
+/* ===== Tombol Admin & Perbaikan Klik (100% Works) ===== */
+.admin-btn {
+    background: rgba(191, 95, 96, 0.08);
+    border: 1.5px solid rgba(94, 40, 40, 0.2);
+    cursor: pointer;
+    color: #781313;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    flex-shrink: 0; 
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto !important;
+    box-shadow: 0 2px 8px rgba(0, 113, 227, 0.14);
+}
+
+/* Bikin semua anak elemen (SVG/path) tembus klik supaya langsung mengenai tombol */
+.admin-btn * {
+    pointer-events: none !important;
+}
+
+.admin-btn:hover {
+    background: #FFF9F2;
+    color: #78132b;
+    border-color: #781346;
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(207, 191, 191, 0.38);
+}
+
+.admin-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mobile-admin-trigger-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    color: #6f0505;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto !important;
+}
+
+.mobile-admin-trigger-btn * {
+    pointer-events: none !important;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.admin-modal {
+    background: #fff;
+    width: 340px;
+    border-radius: 14px;
+    padding: 30px 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-modal h2 { font-size: 20px; margin-bottom: 20px; text-align: center; }
+.admin-modal label { display: block; font-size: 13px; margin-bottom: 6px; color: #555; }
+.admin-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d2d2d7; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+.admin-modal button.submit { width: 100%; padding: 10px; background: #870f3b; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
+.admin-modal button.submit:hover { background: #781313; }
+.close-btn { display: block; margin: 14px auto 0; background: none; border: none; color: #781313; cursor: pointer; font-size: 13px; }
+.msg { text-align: center; font-size: 13px; margin-top: 10px; min-height: 16px; }
+.msg.error { color: #d70015; }
+.msg.success { color: #1a7d3a; }
+
+/* Wrapper Halaman */
+.tentang-page-wrapper {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    background-color: #f8fafc;
+    min-height: 100vh;
+}
+
+.container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-header { margin-bottom: 40px; padding: 0 20px; }
+.page-title { font-size: 30px; font-weight: 600; color: #0f172a; margin-bottom: 10px; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1.15; }
+.page-subtitle { font-size: 15px; color: #475569; font-weight: 300; line-height: 1.6; }
+
+.tentang-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.sidebar-nav {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 110px;
+    background: transparent;
+    padding: 12px 0;
+}
+
+.nav-list { list-style: none; padding: 0; margin: 0; }
+.nav-link {
+    display: block;
+    padding: 11px 18px;
+    color: #475569;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400; 
+    border-left: 3px solid transparent;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover { background-color: #f1f5f9; color: #0f172a; border-radius: 8px; }
+.nav-link.active {
+    color: #9f1239;
+    border-left-color: #9f1239;
+    background-color: #fff1f2;
+    border-radius: 8px;
+    font-weight: 600; 
+}
+
+.content-area { flex: 1; background: transparent; }
+.content-section { scroll-margin-top: 130px; margin-bottom: 40px; }
+.section-heading {
+    font-size: 24px;
+    font-weight: 600; 
+    color: #0f172a;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-heading::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background: #9f1239; }
+
+/* ===== RESPONSIVE / MEDIA QUERIES ===== */
+@media screen and (max-width: 1100px) {
+    nav.navbar { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    .brand-line-1 { font-size: 12px; }
+    .dropdown { padding: 20px 24px; gap: 30px; }
+}
+
+@media screen and (max-width: 992px) {
+    .tentang-layout { flex-direction: column; gap: 20px; }
+    .sidebar-nav { flex: none; width: 100%; position: static; padding: 0; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+    .nav-list { display: flex; overflow-x: auto; white-space: nowrap; padding: 5px; scrollbar-width: none; }
+    .nav-list::-webkit-scrollbar { display: none; }
+    .nav-link { border-left: none; border-bottom: 3px solid transparent; border-radius: 8px; }
+    .nav-link.active { border-left-color: transparent; border-bottom-color: #9f1239; }
+}
+
+@media screen and (max-width: 768px) {
+    nav.navbar {
+        padding: 10px 12px;
+        min-height: 65px;
+        top: 10px;
+        margin: 0 10px;
+        background: rgba(245, 245, 247, 0.98);
+        z-index: 3000 !important;
+    }
+
+    nav.navbar.scrolled {
+        min-height: 55px;
+        padding: 6px 12px;
+    }
+
+    .logo-img { height: 32px; }
+    .brand-text { max-width: 140px; }
+    .brand-line-1 { font-size: 10px; font-weight: 700; line-height: 1.1; }
+    .brand-line-2 { font-size: 8px; line-height: 1.1; }
+
+    .hamburger-btn { display: flex; }
+
+    .mobile-login-container {
+        display: flex !important;
+        width: 100%;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .mobile-admin-trigger-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 12px 16px;
+        background: #0071e3;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        justify-content: center;
+    }
+
+    .mobile-admin-trigger-btn svg {
+        stroke: #fff;
+    }
+
+    .nav-links {
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 85% !important;
+        max-width: 320px !important;
+        height: 100vh !important;
+        background: rgba(245, 245, 247, 0.98) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 90px 24px 30px !important;
+        gap: 20px !important;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        overflow-y: auto !important;
+        z-index: 2500 !important;
+    }
+
+    .nav-links.active { right: 0 !important; }
+
+    .nav-item {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+    }
+
+    .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding: 12px 0 10px 15px;
+        display: none; 
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-item.dropdown-open .dropdown,
+    .nav-item:hover .dropdown {
+        display: flex;
+    }
+
+    .dropdown-column { min-width: 100%; }
+
+    .tentang-page-wrapper { padding-top: 100px; padding-bottom: 50px; }
+    .page-title { font-size: 24px; }
+    .page-subtitle { font-size: 14px; }
+    .section-heading { font-size: 20px; }
+}
+
+@media screen and (max-width: 480px) {
+    .admin-modal { width: 90%; padding: 24px 20px; }
+    .brand-text { max-width: 110px; }
+}
+.admin-modal button.submit:disabled {
+    background: #a0c4e8;
+    cursor: not-allowed;
+}

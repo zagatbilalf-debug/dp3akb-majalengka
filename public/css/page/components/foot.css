@@ -1,0 +1,340 @@
+/* ===== Reset dasar box-sizing khusus komponen footer ===== */
+.site-footer, 
+.site-footer * {
+  box-sizing: border-box;
+}
+
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid #e5e5e5;
+  padding: 50px 40px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1d1d1f;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.footer-col {
+  min-width: 160px;
+  flex: 1; /* Pembagian kolom presisi di layar desktop */
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0 0 18px 0;
+}
+
+/* Group untuk link di dalam kolom agar margin-top nya bekerja rapi */
+.footer-links-group {
+  margin-top: 24px;
+}
+
+.footer-col a {
+  display: block;
+  color: #444444;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* ===== Showcase cards (kolom Program Unggulan) ===== */
+.footer-showcase {
+  flex: 2; /* Dibuat sedikit lebih lebar dari kolom teks biasa */
+  min-width: 320px;
+}
+
+.showcase-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.showcase-card {
+  display: block;
+  width: 160px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.showcase-card:hover {
+  transform: translateY(-3px);
+}
+
+.showcase-image {
+  background-color: #111111;
+  background-size: cover;
+  background-position: center;
+  height: 110px;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.showcase-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.showcase-icon {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+}
+
+.showcase-label {
+  background: #f0f0f0;
+  color: #1d1d1f;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  border-radius: 0 0 6px 6px;
+  text-align: center;
+}
+
+/* ===== Middle Bar (Kontak & Sosial Media Sejajar Presisi) ===== */
+/* Wrapper luar: full-bleed, nempel ke tepi kiri-kanan browser */
+.footer-middle-bar-outer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(135deg, #6b1030 0%, #a52c56 55%, #d1698a 100%);
+}
+
+/* Konten di dalamnya tetap dibatasi max-width & center seperti kolom lain */
+.footer-middle-bar {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Kunci sejajar vertikal */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 25px 40px 30px;
+}
+
+.footer-contact-inline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: #f5e6e6;
+  line-height: 1;
+  transform: translateY(1px); /* Penyesuaian halus agar seimbang dengan pusat lingkaran sosmed */
+}
+
+.footer-contact-inline .contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #ffd9c2;
+}
+
+.footer-contact-inline a {
+  color: #ffd9c2;
+  text-decoration: none;
+}
+
+.footer-contact-inline a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Social Media Icons */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  margin: 0;
+}
+
+.footer-social a:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.footer-social svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  color: #ffffff;
+}
+
+/* ===== Bottom bar ===== */
+.footer-bottom {
+  border-top: 1px solid #e5e5e5;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: #666666;
+  margin: 0;
+}
+
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: #444444;
+  text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   ===== RESPONSIVE / MEDIA QUERIES UNTUK FOOTER =====
+   ========================================================= */
+
+/* ===== TABLET & LAPTOP KECIL (Maksimal 992px) ===== */
+@media (max-width: 992px) {
+  .footer-top {
+    gap: 30px;
+  }
+  
+  .footer-col {
+    min-width: calc(50% - 30px); 
+    flex: 1 1 calc(50% - 30px);
+  }
+
+  .footer-showcase {
+    min-width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* ===== MOBILE (Maksimal 768px) ===== */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 20px 0;
+  }
+  
+  .footer-top {
+    gap: 24px 16px; /* Jarak antar baris 24px, jarak antar kolom 16px */
+  }
+
+  /* KUNCI PERBAIKAN: Di layar HP, paksa menu menjadi 2 kolom bersebelahan */
+  .footer-col {
+    min-width: calc(50% - 8px);
+    flex: 1 1 calc(50% - 8px);
+    margin-bottom: 0;
+  }
+
+  /* Menyesuaikan ukuran font sedikit lebih kecil agar muat di 2 kolom HP */
+  .footer-col h4 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .footer-col a {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .showcase-grid {
+    justify-content: space-between;
+  }
+
+  .showcase-card {
+    width: calc(50% - 8px); 
+  }
+
+  .footer-middle-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px 20px 25px;
+    max-width: 100%;
+  }
+
+  .footer-contact-inline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    transform: none;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 0 30px;
+  }
+
+  .footer-bottom-links {
+    gap: 14px;
+  }
+}
+
+/* ===== SMALL MOBILE (Maksimal 480px) ===== */
+@media (max-width: 480px) {
+  .showcase-card {
+    /* Khusus untuk kartu showcase, jika HP sangat kecil baru diubah jadi 100% memanjang */
+    width: 100%; 
+  }
+  
+  /* Kolom menu tetap dipertahankan 2 kolom agar tidak terlalu panjang ke bawah */
+  
+  .footer-bottom-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

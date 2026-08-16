@@ -1,0 +1,275 @@
+.dokumen-page-wrapper {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #333333;
+    background-color: #f8fafc;
+    padding-bottom: 80px;
+}
+
+.container-custom {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Halaman */
+.dokumen-header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #ffffff;
+    padding: 60px 20px 50px;
+    margin-bottom: 40px;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.page-subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.5;
+}
+
+/* ...sisanya tidak berubah, sama seperti aslinya... */
+
+/* Controls (Search & Filter) */
+.controls-container {
+    max-width: 700px;
+    margin: 0 auto 32px;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #94a3b8;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 16px 14px 50px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1e293b;
+    box-sizing: border-box;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #B8005F;
+    box-shadow: 0 0 0 3px rgba(184, 0, 95, 0.15);
+}
+
+.filter-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.filter-btn.active {
+    background: #B8005F;
+    border-color: #B8005F;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Daftar Dokumen List */
+.dokumen-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.dokumen-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.dokumen-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+.doc-icon {
+    background: #f1f5f9;
+    color: #B8005F;
+    padding: 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.doc-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.doc-info {
+    flex-grow: 1;
+}
+
+.doc-category {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.doc-category.laporan {
+    background-color: #dbeafe;
+    color: #B8005F;
+}
+
+.doc-category.regulasi {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.doc-category.panduan {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.doc-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.doc-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #64748b;
+    flex-wrap: wrap;
+}
+
+.doc-action {
+    flex-shrink: 0;
+}
+
+.btn-download {
+    background-color: #f8fafc;
+    color: #B8005F;
+    border: 1px solid #cbd5e1;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-download:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+}
+
+/* Pesan Kosong / Not Found */
+.no-data-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.no-data-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    color: #cbd5e1;
+}
+
+.no-data-message h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 6px;
+}
+
+.no-data-message p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 768px) {
+    .dokumen-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .doc-action {
+        width: 100%;
+    }
+
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .page-title {
+        font-size: 26px;
+    }
+}
