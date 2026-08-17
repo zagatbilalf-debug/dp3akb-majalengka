@@ -22,7 +22,7 @@ class PageController extends Controller
             ->map(function ($berita) {
                 return [
                     'url' => route('berita.show', $berita->slug),
-                    'gambar' => $berita->gambar ? cloudinary()->getUrl($berita->gambar) : asset('assets/images/berita/default.jpg'),
+                    'gambar' => $berita->gambar ?: asset('assets/images/berita/default.jpg'),
                     'kategori' => $berita->kategori ?? 'Berita',
                     'judul' => $berita->judul,
                     'tanggal' => optional($berita->tanggal_terbit)->translatedFormat('d F Y') ?? $berita->created_at->translatedFormat('d F Y'),
