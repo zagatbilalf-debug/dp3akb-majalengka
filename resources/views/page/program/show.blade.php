@@ -35,3 +35,6 @@
             </a>
         @endif
     </div>
+
+</div>
+@endsection
