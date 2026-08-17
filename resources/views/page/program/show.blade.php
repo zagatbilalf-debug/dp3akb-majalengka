@@ -13,14 +13,14 @@
         'title' => $program->nama_program,
         'subtitle' => Str::limit($program->deskripsi, 120),
        'bgImage' => $program->gambar
-    ? asset('storage/'.$program->gambar)
+    ? (str_starts_with($program->gambar, 'http') ? $program->gambar : asset('storage/'.$program->gambar))
     : asset('assets/images/gedung-sate.jpg')
     ])
 
     <div class="program-show-content">
 
         @if($program->gambar)
-            <img src="{{ asset('storage/'.$program->gambar) }}"
+            <img src="{{ str_starts_with($program->gambar, 'http') ? $program->gambar : asset('storage/'.$program->gambar) }}"
                  alt="{{ $program->nama_program }}"
                  class="program-show-image">
         @endif
