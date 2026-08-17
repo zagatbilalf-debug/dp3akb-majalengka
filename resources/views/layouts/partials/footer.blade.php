@@ -47,7 +47,7 @@
       <a href="{{ route('program.show', $program->id) }}" class="showcase-card">
         <div class="showcase-image"
              @if($program->gambar)
-               style="background-image: url('{{ asset('storage/'.$program->gambar) }}');"
+               style="background-image: url('{{ str_starts_with($program->gambar, 'http') ? $program->gambar : asset('storage/'.$program->gambar) }}');"
              @endif>
           @if(!$program->gambar)
             <span class="showcase-title">{{ $program->nama_program }}</span>

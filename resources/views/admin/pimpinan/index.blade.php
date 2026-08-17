@@ -22,7 +22,7 @@
                     @forelse($pimpinans as $pimpinan)
                         <tr>
                             <td>
-                                <img src="{{ asset('storage/' . $pimpinan->foto) }}" alt="{{ $pimpinan->nama }}" class="pimpinan-thumb">
+                                <img src="{{ str_starts_with($pimpinan->foto, 'http') ? $pimpinan->foto : asset('storage/' . $pimpinan->foto) }}" alt="{{ $pimpinan->nama }}" class="pimpinan-thumb">
                             </td>
                             <td>
                                 <div class="pimpinan-nama">{{ $pimpinan->nama }}</div>

@@ -43,7 +43,7 @@
                      data-search="{{ strtolower($pimpinan->nama.' '.$pimpinan->nip.' '.$pimpinan->jabatan) }}">
 
                     <div class="card-image-wrapper">
-                        <img src="{{ asset('storage/'.$pimpinan->foto) }}" alt="{{ $pimpinan->nama }}" class="profile-img">
+                        <img src="{{ str_starts_with($pimpinan->foto, 'http') ? $pimpinan->foto : asset('storage/'.$pimpinan->foto) }}" alt="{{ $pimpinan->nama }}" class="profile-img">
                         <span class="badge-status {{ $pimpinan->status === 'aktif' ? 'active' : '' }}">
                             {{ ucfirst($pimpinan->status) }}
                         </span>

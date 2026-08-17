@@ -55,7 +55,7 @@
                 <label for="foto">Foto (kosongkan jika tidak diganti)</label>
                 <input type="file" name="foto" id="foto" class="form-control" accept="image/*">
                 @error('foto') <span class="form-error">{{ $message }}</span> @enderror
-                <img src="{{ asset('storage/' . $pimpinan->foto) }}" class="pimpinan-preview-img" id="previewFoto">
+                <img src="{{ str_starts_with($pimpinan->foto, 'http') ? $pimpinan->foto : asset('storage/' . $pimpinan->foto) }}" class="pimpinan-preview-img" id="previewFoto">
             </div>
 
             <div class="pimpinan-form-actions">

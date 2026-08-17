@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pimpinan;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class PimpinanController extends Controller
 {
@@ -43,7 +43,11 @@ class PimpinanController extends Controller
             'foto' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $validated['foto'] = $request->file('foto')->store('pimpinan', 'public');
+        $uploadedFile = Cloudinary::upload(
+            $request->file('foto')->getRealPath(),
+            ['folder' => 'dp3akb/pimpinan']
+        );
+        $validated['foto'] = $uploadedFile->getSecurePath();
 
         Pimpinan::create($validated);
 
@@ -79,8 +83,12 @@ class PimpinanController extends Controller
         ]);
 
         if ($request->hasFile('foto')) {
-            Storage::disk('public')->delete($pimpinan->foto);
-            $validated['foto'] = $request->file('foto')->store('pimpinan', 'public');
+            // Foto lama di Cloudinary sengaja tidak dihapus otomatis
+            $uploadedFile = Cloudinary::upload(
+                $request->file('foto')->getRealPath(),
+                ['folder' => 'dp3akb/pimpinan']
+            );
+            $validated['foto'] = $uploadedFile->getSecurePath();
         }
 
         $pimpinan->update($validated);
@@ -93,7 +101,7 @@ class PimpinanController extends Controller
     {
         $pimpinan = Pimpinan::findOrFail($id);
 
-        Storage::disk('public')->delete($pimpinan->foto);
+        // Catatan: foto di Cloudinary tidak otomatis terhapus.
         $pimpinan->delete();
 
         return redirect()->route('admin.pimpinan.index')
