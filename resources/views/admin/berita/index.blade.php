@@ -23,7 +23,7 @@
                         <tr>
                             <td>
                                 @if($berita->gambar)
-                                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="berita-thumb">
+                                    <img src="{{ $berita->gambar }}" alt="{{ $berita->judul }}" class="berita-thumb">
                                 @else
                                     <div class="berita-thumb berita-thumb-empty">
                                         <i class="fa-solid fa-image"></i>

@@ -47,7 +47,7 @@
                 @error('gambar') <span class="form-error">{{ $message }}</span> @enderror
 
                 @if($berita->gambar)
-                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="berita-preview-img" id="previewGambar">
+                    <img src="{{ $berita->gambar }}" class="berita-preview-img" id="previewGambar">
                 @else
                     <img id="previewGambar" class="berita-preview-img" style="display:none;">
                 @endif
