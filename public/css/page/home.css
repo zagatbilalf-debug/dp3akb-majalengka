@@ -150,6 +150,7 @@
     line-height: 1.3;
     text-shadow: 0 2px 12px rgba(0,0,0,.25);
     opacity: 0;
+    --hero-title-rise: -150px;
     animation: heroTitleRise 0.8s ease 0.15s forwards;
 }
 
@@ -163,7 +164,7 @@
 
 @keyframes heroTitleRise {
     from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(-150px); } /* -150px = seberapa tinggi judul naik */
+    to   { opacity: 1; transform: translateY(var(--hero-title-rise)); } /* jarak diatur lewat variable, disesuaikan per breakpoint */
 }
 
 @keyframes heroTextRise {
@@ -878,6 +879,13 @@
         padding: 90px 18px 56px;
     }
 
+    /* Jarak "naik" judul dikurangi drastis, supaya di hero yang sudah
+       diperkecil tingginya, judul tidak terdorong sampai keluar area
+       yang terlihat / ke-crop di bagian atas */
+    .hero-section .hero-title {
+        --hero-title-rise: -50px;
+    }
+
     .hero-scroll-cue {
         bottom: 18px;
         width: 26px;
@@ -893,16 +901,27 @@
     .hero-inner {
         padding: 70px 16px 44px;
     }
+
+    .hero-section .hero-title {
+        --hero-title-rise: -30px;
+    }
 }
 
 /* ---------- Berita Carousel ---------- */
 @media (max-width: 900px) {
     .berita-layout {
+        /* Dari 2 kolom (sidebar 280px + carousel) jadi 1 kolom bertumpuk,
+           supaya box berita tidak ter-squeeze/hilang di layar sempit */
+        grid-template-columns: 1fr;
         gap: 28px;
     }
 
     .berita-side h2 {
         font-size: 1.35rem;
+    }
+
+    .berita-carousel-wrap {
+        width: 100%;
     }
 }
 

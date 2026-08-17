@@ -54,10 +54,18 @@ body {
     position: relative;
 }
 
+/* Diperluas dari h1-h6, p ke semua elemen teks umum, supaya
+   konten dinamis (dari CKEditor/rich text) yang di-render di
+   dalam div/span juga otomatis membungkus kata/string panjang
+   dan tidak bikin halaman overflow horizontal di mobile. */
+h1, h2, h3, h4, h5, h6, p, span, div, li, td, th, a, label {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 a {
@@ -77,6 +85,7 @@ button {
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 24px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
