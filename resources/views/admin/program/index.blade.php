@@ -10,7 +10,7 @@
             <div class="program-card">
                 <div class="program-card-image">
                     @if($program->gambar)
-                        <img src="{{ asset('storage/' . $program->gambar) }}" alt="{{ $program->nama_program }}">
+                        <img src="{{ str_starts_with($program->gambar, 'http') ? $program->gambar : asset('storage/' . $program->gambar) }}" alt="{{ $program->nama_program }}">
                     @else
                         <div class="program-card-image-empty">
                             <i class="fa-solid fa-star"></i>

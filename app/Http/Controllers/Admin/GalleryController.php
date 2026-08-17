@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -41,7 +41,11 @@ class GalleryController extends Controller
             'foto' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $validated['foto'] = $request->file('foto')->store('gallery', 'public');
+        $uploadedFile = Cloudinary::upload(
+            $request->file('foto')->getRealPath(),
+            ['folder' => 'dp3akb/gallery']
+        );
+        $validated['foto'] = $uploadedFile->getSecurePath();
 
         Gallery::create($validated);
 
@@ -75,8 +79,12 @@ class GalleryController extends Controller
         ]);
 
         if ($request->hasFile('foto')) {
-            Storage::disk('public')->delete($gallery->foto);
-            $validated['foto'] = $request->file('foto')->store('gallery', 'public');
+            // Foto lama di Cloudinary sengaja tidak dihapus otomatis
+            $uploadedFile = Cloudinary::upload(
+                $request->file('foto')->getRealPath(),
+                ['folder' => 'dp3akb/gallery']
+            );
+            $validated['foto'] = $uploadedFile->getSecurePath();
         }
 
         $gallery->update($validated);
@@ -89,7 +97,7 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::findOrFail($id);
 
-        Storage::disk('public')->delete($gallery->foto);
+        // Catatan: foto di Cloudinary tidak otomatis terhapus.
         $gallery->delete();
 
         return redirect()->route('admin.gallery.index')

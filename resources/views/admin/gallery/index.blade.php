@@ -9,7 +9,7 @@
         @forelse($galleries as $gallery)
             <div class="gallery-card">
                 <div class="gallery-card-image">
-                    <img src="{{ asset('storage/' . $gallery->foto) }}" alt="{{ $gallery->judul }}">
+                    <img src="{{ str_starts_with($gallery->foto, 'http') ? $gallery->foto : asset('storage/' . $gallery->foto) }}" alt="{{ $gallery->judul }}">
                     <span class="gallery-card-year">{{ $gallery->tahun }}</span>
                 </div>
                 <div class="gallery-card-body">

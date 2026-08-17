@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <img src="{{ asset('storage/' . $gallery->foto) }}" class="gallery-preview-img" id="previewFoto">
+            <img src="{{ str_starts_with($gallery->foto, 'http') ? $gallery->foto : asset('storage/' . $gallery->foto) }}" class="gallery-preview-img" id="previewFoto">
 
             <div class="form-group">
                 <label for="deskripsi">Deskripsi (opsional)</label>

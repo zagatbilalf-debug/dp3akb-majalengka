@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Program;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProgramController extends Controller
 {
@@ -42,7 +42,12 @@ class ProgramController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
-            $validated['gambar'] = $request->file('gambar')->store('program', 'public');
+            // Upload ke Cloudinary, simpan URL lengkap (bukan path lokal)
+            $uploadedFile = Cloudinary::upload(
+                $request->file('gambar')->getRealPath(),
+                ['folder' => 'dp3akb/program']
+            );
+            $validated['gambar'] = $uploadedFile->getSecurePath();
         }
 
         Program::create($validated);
@@ -77,10 +82,13 @@ class ProgramController extends Controller
         ]);
 
         if ($request->hasFile('gambar')) {
-            if ($program->gambar) {
-                Storage::disk('public')->delete($program->gambar);
-            }
-            $validated['gambar'] = $request->file('gambar')->store('program', 'public');
+            // Gambar lama di Cloudinary sengaja tidak dihapus otomatis
+            // (butuh public_id tersimpan terpisah kalau mau auto-delete)
+            $uploadedFile = Cloudinary::upload(
+                $request->file('gambar')->getRealPath(),
+                ['folder' => 'dp3akb/program']
+            );
+            $validated['gambar'] = $uploadedFile->getSecurePath();
         }
 
         $program->update($validated);
@@ -93,10 +101,7 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
 
-        if ($program->gambar) {
-            Storage::disk('public')->delete($program->gambar);
-        }
-
+        // Catatan: gambar di Cloudinary tidak otomatis terhapus.
         $program->delete();
 
         return redirect()->route('admin.program.index')

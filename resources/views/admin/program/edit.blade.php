@@ -22,7 +22,7 @@
                 @error('gambar') <span class="form-error">{{ $message }}</span> @enderror
 
                 @if($program->gambar)
-                    <img src="{{ asset('storage/' . $program->gambar) }}" class="program-preview-img" id="previewGambar">
+                    <img src="{{ str_starts_with($program->gambar, 'http') ? $program->gambar : asset('storage/' . $program->gambar) }}" class="program-preview-img" id="previewGambar">
                 @else
                     <img id="previewGambar" class="program-preview-img" style="display:none;">
                 @endif

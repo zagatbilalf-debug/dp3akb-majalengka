@@ -146,7 +146,7 @@
                     $programNama = data_get($program, 'nama_program', 'Program Unggulan');
                 @endphp
                 <a href="{{ ($programId && Route::has('program.show')) ? route('program.show', $programId) : '#' }}" class="program-card">
-                    <div class="program-thumb-reveal" style="background-image:url('{{ $programGambar ? cloudinary()->getUrl($programGambar) : asset('assets/images/program/default.jpg') }}')"></div>
+                    <div class="program-thumb-reveal" style="background-image:url('{{ $programGambar ? (str_starts_with($programGambar, 'http') ? $programGambar : asset('storage/' . $programGambar)) : asset('assets/images/program/default.jpg') }}')"></div>
                     <h3>{{ $programNama }}</h3>
                     <span class="program-link">Selengkapnya <i class="fa-solid fa-arrow-right"></i></span>
                 </a>
@@ -176,7 +176,7 @@
                     @endphp
                     <div class="penghargaan-item">
                         <img
-                            src="{{ $foto ? cloudinary()->getUrl($foto) : asset('assets/images/penghargaan/default.jpg') }}"
+                            src="{{ $foto ? (str_starts_with($foto, 'http') ? $foto : asset('storage/' . $foto)) : asset('assets/images/penghargaan/default.jpg') }}"
                             alt="{{ $judul }}"
                             loading="lazy"
                             onerror="this.parentElement.classList.add('is-placeholder')"
