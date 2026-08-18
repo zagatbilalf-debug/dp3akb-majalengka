@@ -19,6 +19,11 @@
                 </thead>
                 <tbody>
                     @forelse($dokumens as $dokumen)
+                        @php
+                            $fileUrl = str_starts_with($dokumen->file, 'http')
+                                ? str_replace('/upload/', '/upload/fl_attachment/', $dokumen->file)
+                                : asset('storage/' . $dokumen->file);
+                        @endphp
                         <tr>
                             <td>{{ $dokumen->judul }}</td>
                             <td>
@@ -30,7 +35,7 @@
                             </td>
                             <td>{{ $dokumen->tanggal?->translatedFormat('d M Y') ?? '-' }}</td>
                             <td>
-                                <a href="{{ asset('storage/' . $dokumen->file) }}" target="_blank" class="dokumen-file-link">
+                                <a href="{{ $fileUrl }}" target="_blank" class="dokumen-file-link">
                                     <i class="fa-solid fa-file-arrow-down"></i> Unduh
                                 </a>
                             </td>
