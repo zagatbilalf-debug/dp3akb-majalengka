@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Dokumen;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class DokumenController extends Controller
 {
@@ -42,7 +42,17 @@ class DokumenController extends Controller
             'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:10240',
         ]);
 
-        $validated['file'] = $request->file('file')->store('dokumen', 'public');
+        $file = $request->file('file');
+        $validated['ukuran'] = $file->getSize();
+
+        $uploaded = Cloudinary::upload($file->getRealPath(), [
+            'folder' => 'dokumen',
+            'resource_type' => 'auto',
+            'use_filename' => true,
+            'unique_filename' => true,
+        ]);
+
+        $validated['file'] = $uploaded->getSecurePath();
 
         Dokumen::create($validated);
 
@@ -77,8 +87,17 @@ class DokumenController extends Controller
         ]);
 
         if ($request->hasFile('file')) {
-            Storage::disk('public')->delete($dokumen->file);
-            $validated['file'] = $request->file('file')->store('dokumen', 'public');
+            $file = $request->file('file');
+            $validated['ukuran'] = $file->getSize();
+
+            $uploaded = Cloudinary::upload($file->getRealPath(), [
+                'folder' => 'dokumen',
+                'resource_type' => 'auto',
+                'use_filename' => true,
+                'unique_filename' => true,
+            ]);
+
+            $validated['file'] = $uploaded->getSecurePath();
         }
 
         $dokumen->update($validated);
@@ -90,8 +109,6 @@ class DokumenController extends Controller
     public function destroy(string $id)
     {
         $dokumen = Dokumen::findOrFail($id);
-
-        Storage::disk('public')->delete($dokumen->file);
         $dokumen->delete();
 
         return redirect()->route('admin.dokumen.index')
