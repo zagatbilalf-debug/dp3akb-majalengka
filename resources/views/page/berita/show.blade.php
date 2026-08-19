@@ -33,7 +33,8 @@
             {{-- Konten Artikel --}}
 <article class="berita-detail-content">
     @if($berita->gambar)
-        <img src="{{ $berita->gambar }}" alt="{{ $berita->judul }}" class="detail-cover-img">
+        <img src="{{ $berita->gambar }}" alt="{{ $berita->judul }}" class="detail-cover-img"
+             onerror="this.onerror=null;this.src='{{ asset('assets/images/berita/default.jpg') }}'">
     @endif
 
     <div class="detail-body">
@@ -52,7 +53,8 @@
                 @forelse($beritaLainnya as $item)
                     <a href="{{ route('berita.show', $item->slug) }}" class="sidebar-berita-item">
                         <div class="sidebar-berita-img">
-                            <img src="{{ $item->gambar ?: asset('assets/images/berita/default.jpg') }}" alt="{{ $item->judul }}">
+                            <img src="{{ $item->gambar ?: asset('assets/images/berita/default.jpg') }}" alt="{{ $item->judul }}"
+                                 onerror="this.onerror=null;this.src='{{ asset('assets/images/berita/default.jpg') }}'">
                         </div>
                         <div class="sidebar-berita-text">
                             <h4>{{ Str::limit($item->judul, 60) }}</h4>

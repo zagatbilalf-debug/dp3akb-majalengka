@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
-    background-color: #f4f6f9;
+    background-color: #ffffff;
     color: #1e2a3a;
     font-size: 14px;
     line-height: 1.5;
@@ -167,7 +167,7 @@ table.data-table tbody tr:hover {
     justify-content: center;
     gap: 8px;
     padding: 9px 16px;
-    min-height: 38px; /* touch target layak */
+    min-height: 38px; 
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
@@ -201,7 +201,7 @@ table.data-table tbody tr:hover {
     transition: margin-left 0.3s ease;
 }
 
-/* Saat sidebar di-collapse (ikon-only) */
+
 .sidebar.collapsed ~ .main-content {
     margin-left: var(--sidebar-collapsed-width, 84px);
 }
@@ -223,7 +223,7 @@ table.data-table tbody tr:hover {
    RESPONSIVE
 =========================================================== */
 
-/* ---------- Tablet kecil (768px ke bawah) ---------- */
+
 @media (max-width: 768px) {
     .content-wrapper {
         padding: 0 18px 28px;
@@ -244,7 +244,7 @@ table.data-table tbody tr:hover {
     }
 }
 
-/* ---------- HP (576px ke bawah) ---------- */
+
 @media (max-width: 576px) {
     body {
         font-size: 13.5px;
@@ -285,7 +285,7 @@ table.data-table tbody tr:hover {
     }
 }
 
-/* ---------- Hormati preferensi reduced motion ---------- */
+
 @media (prefers-reduced-motion: reduce) {
     .main-content,
     .btn {

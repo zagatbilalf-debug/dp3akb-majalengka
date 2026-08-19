@@ -55,7 +55,8 @@
                     @foreach($beritas as $berita)
                         <a href="{{ route('berita.show', $berita->slug) }}" class="berita-card">
                             <div class="berita-card-img">
-                                <img src="{{ $berita->gambar ?: asset('assets/images/berita/default.jpg') }}" alt="{{ $berita->judul }}">
+                                <img src="{{ $berita->gambar ?: asset('assets/images/berita/default.jpg') }}" alt="{{ $berita->judul }}"
+                                     onerror="this.onerror=null;this.src='{{ asset('assets/images/berita/default.jpg') }}'">
                                 @if($berita->kategori)
                                     <span class="berita-card-badge">{{ $berita->kategori }}</span>
                                 @endif

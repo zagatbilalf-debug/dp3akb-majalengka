@@ -2,8 +2,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <nav class="navbar">
-   <a href="{{ url('/') }}" class="logo">
-    <img src="{{ asset('assets/images/Group 2.svg') }}" alt="DP3AKB Majalengka" class="logo-img-full">
+ <a href="{{ url('/') }}" class="logo">
+    <img src="{{ asset('assets/images/logo1.png') }}" alt="DP3AKB Majalengka" class="logo-img-full">
 </a>
 
     <div class="nav-links" id="navLinks">

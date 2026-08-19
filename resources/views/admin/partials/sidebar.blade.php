@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="{{ asset('css/admin/partials/sidebar.css') }}">
 
 <aside class="sidebar" id="sidebar">
-   <div class="sidebar-brand">
-    <div class="sidebar-logo-wrap">
-        <img src="{{ asset('assets/images/Group 2.svg') }}"  class="sidebar-logo-full">
+    <div class="sidebar-brand">
+        <div class="sidebar-logo-wrap">
+            <img src="{{ asset('assets/images/logo1.png') }}" alt="DP3AKB Majalengka" class="sidebar-logo-full">
+        </div>
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Tutup Sidebar">
+            <i class="fa-solid fa-angles-left"></i>
+        </button>
     </div>
-    <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Tutup Sidebar">
-        <i class="fa-solid fa-angles-left"></i>
-    </button>
-</div>
+    <!-- (lanjutan menu lainnya tetap sama) -->
 
     <nav class="sidebar-nav">
         <ul class="sidebar-menu">
