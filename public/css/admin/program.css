@@ -1,6 +1,4 @@
-/* ===========================================================
-   TOMBOL (self-contained)
-=========================================================== */
+
 .program-form-actions .btn,
 .program-card-actions .btn {
     display: inline-flex;
@@ -58,9 +56,6 @@
     background-color: #c0392b !important;
 }
 
-/* ===========================================================
-   GRID PROGRAM (index)
-=========================================================== */
 .program-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -165,9 +160,6 @@
     justify-content: flex-end;
 }
 
-/* ===========================================================
-   CARD WRAPPER (form)
-=========================================================== */
 .card {
     background: #fff;
     border-radius: 14px;
@@ -175,9 +167,6 @@
     padding: 28px 30px;
 }
 
-/* ===========================================================
-   FORM
-=========================================================== */
 .program-form .form-group {
     margin-bottom: 22px;
 }
@@ -223,7 +212,7 @@
     min-height: 120px;
 }
 
-/* ===== File input custom ===== */
+
 .program-form input[type="file"] {
     width: 100%;
     padding: 10px 14px;

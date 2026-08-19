@@ -1,6 +1,4 @@
-/* ===========================================================
-   TOMBOL (self-contained)
-=========================================================== */
+/*TOMBOL (self-contained) */
 .pimpinan-form-actions .btn,
 .pimpinan-actions .btn {
     display: inline-flex;
@@ -63,9 +61,7 @@
     gap: 8px;
 }
 
-/* ===========================================================
-   TABEL
-=========================================================== */
+/* TABEL */
 .pimpinan-thumb {
     width: 48px;
     height: 48px;

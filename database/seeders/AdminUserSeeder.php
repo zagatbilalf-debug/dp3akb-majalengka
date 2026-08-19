@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'email' => 'admin@dp3akb-majalengka.local',
-                'password' => Hash::make('admin123'), // ganti lewat halaman Ganti Password setelah login pertama kali
+                'password' => Hash::make('admin123'), 
             ]
         );
     }

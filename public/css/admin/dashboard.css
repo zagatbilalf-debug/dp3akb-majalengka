@@ -7,7 +7,7 @@
    ACCENT COLOR & GLOBAL STYLES
    =========================================================== */
 :root {
-    /* SF Pro otomatis dipakai di macOS/iOS, Roboto jadi fallback web-font di device lain */
+    
     --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Roboto, "Segoe UI", sans-serif;
 
     --primary-color: #e91e63;
@@ -20,7 +20,7 @@
     --text-muted: #8a93a3;
     --text-faint: #a7abb8;
 
-    /* warna varian ikon statistik */
+    
     --c-blue: #3b82f6;   --c-blue-bg: #eef4ff;
     --c-orange: #f97316; --c-orange-bg: #fff1e6;
     --c-green: #16a34a;  --c-green-bg: #eafaf0;
@@ -78,7 +78,7 @@
     margin-top: 3px;
 }
 
-/* Kotak ikon bulat lembut, warna beda per kategori */
+
 .stat-icon {
     width: 44px;
     height: 44px;
@@ -142,7 +142,7 @@
     color: var(--primary-color);
 }
 
-/* Tombol "Lihat Semua ->" pill pink */
+
 .dashboard-card-link {
     display: inline-flex;
     align-items: center;

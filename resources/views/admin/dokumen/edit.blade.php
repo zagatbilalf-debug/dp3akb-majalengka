@@ -44,7 +44,9 @@
                 <div class="dokumen-current-file">
                     <i class="fa-solid fa-file"></i>
                     File saat ini:
-                    <a href="{{ asset('storage/' . $dokumen->file) }}" target="_blank">{{ basename($dokumen->file) }}</a>
+                    <a href="{{ str_starts_with($dokumen->file, 'http') ? $dokumen->file : asset('storage/' . $dokumen->file) }}" target="_blank">
+                        {{ str_starts_with($dokumen->file, 'http') ? basename(parse_url($dokumen->file, PHP_URL_PATH)) : basename($dokumen->file) }}
+                    </a>
                 </div>
 
                 <div id="fileNamePreview" class="dokumen-filename-preview" style="display:none;"></div>

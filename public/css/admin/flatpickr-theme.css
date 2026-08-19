@@ -1,0 +1,108 @@
+/* ==========================================================================
+   flatpickr-theme.css — Custom date picker tema DP3AKB (pink)
+   ========================================================================== */
+
+.flatpickr-calendar {
+    font-family: inherit;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(157, 23, 77, 0.18);
+    border: 1px solid #f3d9e6;
+    padding: 8px;
+}
+
+.flatpickr-calendar.arrowTop:before,
+.flatpickr-calendar.arrowTop:after {
+    border-bottom-color: #ffffff;
+}
+
+/* Header bulan/tahun */
+.flatpickr-months {
+    padding: 6px 4px 10px;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: #1e2a3a;
+    fill: #1e2a3a;
+}
+
+.flatpickr-current-month {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e2a3a;
+}
+
+.flatpickr-current-month input.cur-year {
+    font-weight: 700;
+    color: #1e2a3a;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+    font-weight: 700;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+    fill: #db2777;
+    transition: fill 0.15s ease;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+    fill: #9d174d;
+}
+
+/* Nama hari (Min, Sen, Sel, ...) */
+.flatpickr-weekdays {
+    background: transparent;
+}
+
+span.flatpickr-weekday {
+    font-size: 12px;
+    font-weight: 700;
+    color: #9aa5b1;
+}
+
+/* Angka tanggal */
+.flatpickr-day {
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: #1e2a3a;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.flatpickr-day.today {
+    border-color: #db2777;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+    background: #fdf2f8;
+    border-color: #fdf2f8;
+    color: #9d174d;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.flatpickr-day.selected:focus {
+    background: linear-gradient(135deg, #db2777, #9d174d);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(219, 39, 119, 0.3);
+}
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+    color: #cbd3dc;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+    color: #d8dee5;
+}
+
+/* Footer shortcut "Hari ini" / "Hapus" (kalau pakai plugin confirmDate/shortcut) */
+.flatpickr-calendar .flatpickr-today-btn {
+    color: #db2777;
+    font-weight: 600;
+    font-size: 12.5px;
+}

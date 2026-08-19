@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    // ===== Home / Beranda Utama =====
+
     public function home()
     {
         $beritaTerbaru = Berita::where('status', 'publish')
@@ -55,13 +55,13 @@ class PageController extends Controller
         ]);
     }
 
-    // ===== Kontak =====
+  
     public function contact()
     {
         return view('page.contact');
     }
 
-    // ===== Berita Publik =====
+  
     public function beritaIndex(Request $request)
     {
         $query = Berita::where('status', 'publish')->latest('tanggal_terbit');
@@ -106,7 +106,7 @@ class PageController extends Controller
         ]);
     }
 
-    // ===== Agenda Publik =====
+ 
     public function agendaIndex()
     {
         $agendaMendatang = Agenda::where('tanggal', '>=', now()->startOfDay())
@@ -148,11 +148,7 @@ class PageController extends Controller
         ]);
     }
 
-    /**
-     * Endpoint AJAX (JSON) untuk kalender agenda mini di Beranda.
-     * Dipanggil oleh js/page/home.js setiap kali bulan diganti / halaman dimuat.
-     * Mengembalikan semua agenda pada bulan & tahun yang diminta.
-     */
+    
     public function agendaKalender(Request $request)
     {
         $bulan = (int) $request->query('bulan', now()->month);
@@ -178,7 +174,7 @@ class PageController extends Controller
         ]);
     }
 
-    // ===== Gallery Penghargaan Publik =====
+    
     public function penghargaanIndex()
     {
         $galleries = Gallery::latest()->paginate(12);
@@ -211,7 +207,7 @@ class PageController extends Controller
         ]);
     }
 
-    // ===== Document / Dokumen =====
+    
     public function documentIndex(Request $request)
     {
         $query = Dokumen::latest();

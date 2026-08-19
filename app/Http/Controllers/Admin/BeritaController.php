@@ -27,8 +27,7 @@ class BeritaController extends Controller
             $query->latest();
         }
 
-        /** @var \Illuminate\Pagination\LengthAwarePaginator $beritas */
-        $beritas = $query->paginate(10)->withQueryString();
+        $beritas = $query->paginate(10)->appends($request->except('page'));
 
         $kategoriList = Berita::whereNotNull('kategori')
             ->distinct()

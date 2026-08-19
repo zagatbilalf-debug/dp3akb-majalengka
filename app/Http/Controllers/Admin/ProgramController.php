@@ -101,7 +101,6 @@ class ProgramController extends Controller
     {
         $program = Program::findOrFail($id);
 
-        // Catatan: gambar di Cloudinary tidak otomatis terhapus.
         $program->delete();
 
         return redirect()->route('admin.program.index')
