@@ -383,6 +383,58 @@ nav.navbar.scrolled .nav-links a {
 .admin-modal h2 { font-size: 20px; margin-bottom: 20px; text-align: center; }
 .admin-modal label { display: block; font-size: 13px; margin-bottom: 6px; color: #555; }
 .admin-modal input { width: 100%; padding: 10px 12px; border: 1px solid #d2d2d7; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+
+/* ===== Toggle Show/Hide Password ===== */
+.password-field {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.password-field input {
+    margin-bottom: 0;
+    padding-right: 42px; /* kasih ruang buat icon mata di kanan */
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    color: #8a8a8e;
+    cursor: pointer;
+    line-height: 0;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #781313;
+    background: rgba(120, 19, 19, 0.06);
+}
+
+/* Default: mode password (tersembunyi) -> tampilkan icon mata terbuka,
+   sembunyikan icon mata-coret */
+.toggle-password .icon-eye-off {
+    display: none;
+}
+
+/* Saat is-visible (password sedang ditampilkan) -> kebalikannya */
+.toggle-password.is-visible .icon-eye {
+    display: none;
+}
+
+.toggle-password.is-visible .icon-eye-off {
+    display: block;
+}
+
 .admin-modal button.submit { width: 100%; padding: 10px; background: #870f3b; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
 .admin-modal button.submit:hover { background: #781313; }
 .close-btn { display: block; margin: 14px auto 0; background: none; border: none; color: #781313; cursor: pointer; font-size: 13px; }

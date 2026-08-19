@@ -16,9 +16,11 @@
         1. HERO SECTION
     ========================================================== --}}
     <section class="hero-section">
-       <div class="hero-slide is-active" style="background-image:url('{{ asset('assets/images/index/women.jpg') }}')"></div>
-<div class="hero-slide" style="background-image:url('{{ asset('assets/images/index/children.jpg') }}')"></div>
-<div class="hero-slide" style="background-image:url('{{ asset('assets/images/index/childrens.jpg') }}')"></div>
+        <div class="hero-slider" id="heroSlider">
+            <div class="hero-slide is-active" style="background-image:url('{{ asset('assets/images/index/women.jpg') }}')"></div>
+            <div class="hero-slide" style="background-image:url('{{ asset('assets/images/index/children.jpg') }}')"></div>
+            <div class="hero-slide" style="background-image:url('{{ asset('assets/images/index/childrens.jpg') }}')"></div>
+        </div>
         <div class="hero-overlay"></div>
 
         <div class="container-custom hero-inner">

@@ -69,6 +69,30 @@ const closeModalBtn = document.getElementById("closeModal");
 const loginForm = document.getElementById("loginForm");
 const msg = document.getElementById("msg");
 const loginSubmitBtn = document.getElementById("loginSubmitBtn");
+const togglePasswordBtn = document.getElementById("togglePassword");
+const passwordInput = document.getElementById("password");
+
+/* ===== Toggle Show/Hide Password ===== */
+function resetPasswordVisibility() {
+  if (passwordInput) passwordInput.type = "password";
+  if (togglePasswordBtn) {
+    togglePasswordBtn.classList.remove("is-visible");
+    togglePasswordBtn.setAttribute("aria-label", "Tampilkan password");
+  }
+}
+
+if (togglePasswordBtn && passwordInput) {
+  togglePasswordBtn.addEventListener("click", () => {
+    const isHidden = passwordInput.type === "password";
+    passwordInput.type = isHidden ? "text" : "password";
+    togglePasswordBtn.classList.toggle("is-visible", isHidden);
+    togglePasswordBtn.setAttribute(
+      "aria-label",
+      isHidden ? "Sembunyikan password" : "Tampilkan password"
+    );
+    passwordInput.focus();
+  });
+}
 
 function openAdminModal(e) {
   if (e) e.preventDefault();
@@ -79,6 +103,7 @@ function openAdminModal(e) {
       msg.className = "msg";
     }
   }
+  resetPasswordVisibility();
   closeMobileMenu();
 }
 
@@ -94,6 +119,7 @@ if (closeModalBtn && overlay) {
   closeModalBtn.addEventListener("click", () => {
     overlay.classList.remove("active");
     if (loginForm) loginForm.reset();
+    resetPasswordVisibility();
   });
 }
 
@@ -101,6 +127,7 @@ if (overlay) {
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) {
       overlay.classList.remove("active");
+      resetPasswordVisibility();
     }
   });
 }

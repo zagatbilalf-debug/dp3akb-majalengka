@@ -116,9 +116,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->only(['index', 'show', 'destroy']);
         Route::resource('pimpinan', PimpinanController::class);
 
-        // Ganti Password (hanya bisa diakses admin yang sudah login)
-        Route::get('/ganti-password', [AuthController::class, 'showChangePasswordForm'])->name('ganti-password');
-        Route::put('/ganti-password', [AuthController::class, 'updatePassword'])->name('ganti-password.update');
+       // Pengaturan (index = daftar opsi, salah satunya Ubah Password)
+Route::get('/pengaturan', [AuthController::class, 'pengaturanIndex'])->name('pengaturan.index');
+Route::get('/pengaturan/ubah-password', [AuthController::class, 'showChangePasswordForm'])->name('pengaturan.ubah-password');
+Route::put('/pengaturan/ubah-password', [AuthController::class, 'updatePassword'])->name('pengaturan.password.update');
     });
 });
 

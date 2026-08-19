@@ -5,7 +5,10 @@
 
 <div class="ganti-password-wrapper">
     <div class="page-title-row">
-        <h1>Ganti Password</h1>
+        <a href="{{ route('admin.pengaturan.index') }}" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Pengaturan
+        </a>
+        <h1>Ubah Password</h1>
         <p>Ubah password akun admin kamu secara berkala untuk menjaga keamanan.</p>
     </div>
 
@@ -26,7 +29,7 @@
     @endif
 
     <div class="ganti-password-card">
-        <form method="POST" action="{{ route('admin.ganti-password.update') }}" id="gantiPasswordForm">
+        <form method="POST" action="{{ route('admin.pengaturan.password.update') }}" id="gantiPasswordForm">
             @csrf
             @method('PUT')
 
@@ -86,7 +89,7 @@
 
             <div class="form-actions">
                 <button type="submit" class="btn-save">Simpan Password Baru</button>
-                <a href="{{ route('admin.dashboard') }}" class="btn-cancel">Batal</a>
+                <a href="{{ route('admin.pengaturan.index') }}" class="btn-cancel">Batal</a>
             </div>
         </form>
     </div>

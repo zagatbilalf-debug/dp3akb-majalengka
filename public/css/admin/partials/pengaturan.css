@@ -1,0 +1,154 @@
+/* ==========================================================================
+   pengaturan.css — DP3AKB Admin Pengaturan (index)
+   ========================================================================== */
+
+:root {
+    --pengaturan-pink: #db2777;
+    --pengaturan-pink-dark: #9d174d;
+    --pengaturan-pink-soft: #fdf2f8;
+    --pengaturan-text: #1e2a3a;
+    --pengaturan-muted: #64748b;
+    --pengaturan-border: #e6e9ee;
+}
+
+.pengaturan-wrapper {
+    padding: 30px 40px 60px;
+    max-width: 900px;
+}
+
+.pengaturan-wrapper .page-title-row {
+    margin-bottom: 28px;
+}
+
+.pengaturan-wrapper .page-title-row h1 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--pengaturan-text);
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+}
+
+.pengaturan-wrapper .page-title-row p {
+    font-size: 14px;
+    color: var(--pengaturan-muted);
+    margin: 0;
+}
+
+.pengaturan-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pengaturan-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #ffffff;
+    border: 1px solid var(--pengaturan-border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.pengaturan-card:hover {
+    border-color: var(--pengaturan-pink);
+    box-shadow: 0 8px 20px rgba(219, 39, 119, 0.12);
+    transform: translateY(-2px);
+}
+
+.pengaturan-card-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--pengaturan-pink-soft);
+    color: var(--pengaturan-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pengaturan-card:hover .pengaturan-card-icon {
+    background: var(--pengaturan-pink);
+    color: #ffffff;
+}
+
+.pengaturan-card-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.pengaturan-card-text h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--pengaturan-text);
+    margin: 0 0 4px;
+}
+
+.pengaturan-card-text p {
+    font-size: 13px;
+    color: var(--pengaturan-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.pengaturan-card-arrow {
+    flex-shrink: 0;
+    color: #c4cad4;
+    font-size: 14px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.pengaturan-card:hover .pengaturan-card-arrow {
+    color: var(--pengaturan-pink);
+    transform: translateX(4px);
+}
+
+/* Link "Kembali ke Pengaturan" di halaman ubah-password */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pengaturan-muted);
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--pengaturan-pink);
+}
+
+@media (max-width: 768px) {
+    .pengaturan-wrapper {
+        padding: 24px 20px 50px;
+    }
+
+    .pengaturan-card {
+        padding: 16px 18px;
+        gap: 14px;
+    }
+
+    .pengaturan-card-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+
+    .pengaturan-card-text h3 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pengaturan-card-text p {
+        display: none;
+    }
+}

@@ -196,6 +196,17 @@
     flex-wrap: wrap;
 }
 
+.doc-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.doc-meta i {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
 .doc-action {
     flex-shrink: 0;
 }
@@ -214,6 +225,10 @@
     gap: 6px;
     transition: all 0.2s;
     white-space: nowrap;
+}
+
+.btn-download i {
+    font-size: 13px;
 }
 
 .btn-download:hover {

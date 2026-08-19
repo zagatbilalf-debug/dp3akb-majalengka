@@ -7,7 +7,7 @@
     <title>{{ $title ?? 'Admin' }} | DP3AKB Kab. Majalengka</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/Group 2.svg') }}">
+     <link rel="icon" type="image/png" href="{{ asset('assets/images/logo3.png') }}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">

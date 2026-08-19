@@ -2,6 +2,8 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/admin/berita.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{{ asset('css/admin/flatpickr-theme.css') }}">
 @endpush
 
 @section('content')
@@ -37,7 +39,7 @@
 
                 <div class="form-group">
                     <label for="tanggal_terbit">Tanggal Terbit</label>
-                    <input type="date" name="tanggal_terbit" id="tanggal_terbit" value="{{ old('tanggal_terbit', $berita->tanggal_terbit) }}" class="form-control">
+                    <input type="text" name="tanggal_terbit" id="tanggal_terbit" value="{{ old('tanggal_terbit', $berita->tanggal_terbit) }}" class="form-control" placeholder="Pilih tanggal" autocomplete="off">
                 </div>
             </div>
 
@@ -69,5 +71,18 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/id.js" defer></script>
     <script src="{{ asset('js/admin/berita.js') }}" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            flatpickr("#tanggal_terbit", {
+                dateFormat: "Y-m-d",
+                altInput: true,
+                altFormat: "d F Y",
+                locale: "id",
+                allowInput: true,
+            });
+        });
+    </script>
 @endpush

@@ -46,13 +46,13 @@
                         <span class="doc-category {{ $dokumen->kategori ? Str::slug($dokumen->kategori) : 'lainnya' }}">{{ $dokumen->kategori ?? 'Lainnya' }}</span>
                         <h3 class="doc-title">{{ $dokumen->judul }}</h3>
                         <div class="doc-meta">
-                            <span>🗓️ Diunggah: {{ $dokumen->tanggal?->translatedFormat('d M Y') ?? $dokumen->created_at->translatedFormat('d M Y') }}</span>
-                            <span>📄 {{ strtoupper(pathinfo($dokumen->file, PATHINFO_EXTENSION)) }}</span>
-                            <span>💾 {{ $dokumen->ukuran ? number_format($dokumen->ukuran / 1024 / 1024, 1) . ' MB' : '-' }}</span>
+                            <span><i class="fa-solid fa-calendar-days"></i> Diunggah: {{ $dokumen->tanggal?->translatedFormat('d M Y') ?? $dokumen->created_at->translatedFormat('d M Y') }}</span>
+                            <span><i class="fa-solid fa-file-lines"></i> {{ strtoupper(pathinfo($dokumen->file, PATHINFO_EXTENSION)) }}</span>
+                            <span><i class="fa-solid fa-hard-drive"></i> {{ $dokumen->ukuran ? number_format($dokumen->ukuran / 1024 / 1024, 1) . ' MB' : '-' }}</span>
                         </div>
                     </div>
                     <div class="doc-action">
-                        <a href="{{ str_replace('/upload/', '/upload/fl_attachment/', $dokumen->file) }}" class="btn-download" target="_blank">Unduh Dokumen &darr;</a>
+                        <a href="{{ str_replace('/upload/', '/upload/fl_attachment/', $dokumen->file) }}" class="btn-download" target="_blank">Unduh Dokumen <i class="fa-solid fa-arrow-down"></i></a>
                     </div>
                 </div>
             @empty

@@ -9,9 +9,26 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $beritas = Berita::latest()->paginate(10);
+        // Whitelist kolom yang boleh di-sort dari URL, biar orang gak bisa
+        // nyuntik nama kolom sembarangan lewat query string (?sort=...)
+        $sortable = ['judul', 'status', 'tanggal_terbit'];
+
+        $sort = $request->query('sort');
+        $direction = $request->query('direction') === 'desc' ? 'desc' : 'asc';
+
+        $query = Berita::query();
+
+        if ($sort && in_array($sort, $sortable, true)) {
+            $query->orderBy($sort, $direction)
+                ->orderByDesc('id'); // tie-breaker biar urutan antar baris yang nilainya sama tetap stabil
+        } else {
+            $query->latest();
+        }
+
+        /** @var \Illuminate\Pagination\LengthAwarePaginator $beritas */
+        $beritas = $query->paginate(10)->withQueryString();
 
         $kategoriList = Berita::whereNotNull('kategori')
             ->distinct()
@@ -109,8 +126,6 @@ class BeritaController extends Controller
     public function destroy(string $id)
     {
         $berita = Berita::findOrFail($id);
-
-        // Catatan: gambar di Cloudinary tidak otomatis terhapus.
         $berita->delete();
 
         return redirect()->route('admin.berita.index')
@@ -128,7 +143,6 @@ class BeritaController extends Controller
             ['folder' => 'dp3akb/berita/konten']
         );
 
-        // Format response WAJIB seperti ini, sesuai spesifikasi CKEditor 5 upload adapter
         return response()->json([
             'url' => $uploadedFile->getSecurePath(),
         ]);

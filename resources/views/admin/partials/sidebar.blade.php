@@ -62,15 +62,15 @@
                 </a>
             </li>
             <li class="sidebar-item {{ request()->routeIs('admin.pimpinan.*') ? 'active' : '' }}">
-    <a href="{{ route('admin.pimpinan.index') }}">
-        <i class="fa-solid fa-user-tie"></i>
-        <span class="sidebar-text">Pimpinan</span>
-    </a>
-</li>
-            <li class="sidebar-item {{ request()->routeIs('admin.ganti-password') ? 'active' : '' }}">
-                <a href="{{ route('admin.ganti-password') }}" data-title="Ganti Password">
-                    <i class="fa-solid fa-key"></i>
-                    <span class="sidebar-text">Ganti Password</span>
+                <a href="{{ route('admin.pimpinan.index') }}" data-title="Pimpinan">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span class="sidebar-text">Pimpinan</span>
+                </a>
+            </li>
+            <li class="sidebar-item {{ request()->routeIs('admin.pengaturan.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.pengaturan.index') }}" data-title="Pengaturan">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="sidebar-text">Pengaturan</span>
                 </a>
             </li>
         </ul>

@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 
 class AuthController extends Controller
 {
-    /**
-     * Proses login admin via AJAX/Fetch dari modal.
-     * Endpoint: POST /admin/login
-     */
+
     public function login(Request $request): JsonResponse
     {
         $throttleKey = 'admin-login:' . $request->ip();
@@ -32,11 +29,11 @@ class AuthController extends Controller
             ], 429);
         }
 
-        // Cek kredensial ke tabel users (bukan hardcoded lagi)
+
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate(); // cegah session fixation
+            $request->session()->regenerate(); 
             RateLimiter::clear($throttleKey);
 
             // Dipertahankan supaya middleware admin.auth yang sudah ada tetap jalan
@@ -57,10 +54,7 @@ class AuthController extends Controller
         ], 401);
     }
 
-    /**
-     * Proses logout admin.
-     * Endpoint: POST /logout
-     */
+
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
@@ -71,19 +65,24 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    /**
-     * Tampilkan form ganti password.
-     * Endpoint: GET /admin/ganti-password
-     */
-    public function showChangePasswordForm()
+
+    // Halaman index Pengaturan — daftar opsi (sekarang baru "Ubah Password")
+    public function pengaturanIndex()
     {
-        return view('admin.partials.ganti-password');
+        return view('admin.pengaturan.index', [
+            'title' => 'Pengaturan',
+        ]);
     }
 
-    /**
-     * Proses ganti password admin yang sedang login.
-     * Endpoint: PUT /admin/ganti-password
-     */
+
+    public function showChangePasswordForm()
+    {
+        return view('admin.pengaturan.ubah-password', [
+            'title' => 'Ubah Password',
+        ]);
+    }
+
+
     public function updatePassword(Request $request): RedirectResponse
     {
         $request->validate([
@@ -108,7 +107,7 @@ class AuthController extends Controller
         $user->save();
 
         return redirect()
-            ->route('admin.ganti-password')
+            ->route('admin.pengaturan.ubah-password')
             ->with('success', 'Password berhasil diubah. Gunakan password baru untuk login berikutnya.');
     }
 }
