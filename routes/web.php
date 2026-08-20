@@ -20,10 +20,6 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
 // Route submit form kontak (publik)
 Route::post('/kontak', [PesanPublicController::class, 'store'])->name('contact.store');
-
-// Halaman Biodata Developer
-Route::get('/developer', [PageController::class, 'developerBio'])->name('developer.biodata');
-
 // Modul Berita Publik
 Route::prefix('berita')->name('berita.')->group(function () {
     Route::get('/', [PageController::class, 'beritaIndex'])->name('index');
