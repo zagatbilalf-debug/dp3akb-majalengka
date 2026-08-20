@@ -15,11 +15,11 @@
     --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-    /* Ukuran box bersama untuk Program Unggulan & Penghargaan.
-       Satu sumber angka ini dipakai di DUA section itu, jadi box-nya
-       dijamin persis sama gedenya (px sama) di breakpoint manapun.
-       Tinggal ubah di sini kalau mau resize semua sekaligus. */
-    --feature-box-w: 400px;
+    /* Tinggi box bersama untuk Program Unggulan & Penghargaan.
+       Lebar box sekarang FLEKSIBEL (1fr lewat grid-template-columns),
+       bukan px fix lagi, jadi box selalu ngisi penuh 3 kolom sejajar
+       tanpa nyisain ruang kosong. Tinggal ubah tinggi di sini kalau
+       mau resize semua sekaligus. */
     --feature-box-h: 250px;
 }
 
@@ -629,10 +629,9 @@
 ========================================================== */
 .program-grid {
     display: grid;
-    /* auto-fill + minmax dg nilai sama = kolom selalu selebar
-       --feature-box-w persis, jumlah kolom menyesuaikan lebar layar */
-    grid-template-columns: repeat(auto-fill, minmax(var(--feature-box-w), var(--feature-box-w)));
-    justify-content: start;
+    /* 3 kolom sama rata (fleksibel), bukan px fix, jadi box selalu
+       ngisi penuh lebar container tanpa nyisain ruang kosong */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
     margin-bottom: 64px;
 }
@@ -646,7 +645,7 @@
     background: #ffffff;
     border: 1px solid #e6e9ee;
     padding: 28px 26px 26px;
-    width: var(--feature-box-w);
+    width: 100%;
     height: var(--feature-box-h);
     box-sizing: border-box;
     text-decoration: none;
@@ -778,10 +777,9 @@
 ========================================================== */
 .penghargaan-gallery {
     display: grid;
-    /* Sama persis kayak .program-grid: kolom selebar --feature-box-w,
-       biar box Penghargaan gedenya identik sama box Program Unggulan */
-    grid-template-columns: repeat(auto-fill, minmax(var(--feature-box-w), var(--feature-box-w)));
-    justify-content: start;
+    /* Sama persis kayak .program-grid: 3 kolom sama rata, biar box
+       Penghargaan gedenya identik sama box Program Unggulan */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
 }
 
@@ -789,7 +787,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    width: var(--feature-box-w);
+    width: 100%;
     height: var(--feature-box-h);
     box-sizing: border-box;
     background-color: #f4f6f9; /* fallback warna sebelum gambar/placeholder muncul */
@@ -1033,21 +1031,29 @@
     }
 }
 
-/* ---------- Ukuran box bersama: Program Unggulan + Penghargaan ----------
-   Dua-duanya pakai --feature-box-w/--feature-box-h yang sama, jadi
-   tinggal override di sini biar box tetep sama gede di semua breakpoint,
-   jumlah kolom per baris otomatis nyesuaiin (grid auto-fill) */
+/* ---------- Program Unggulan & Penghargaan: jumlah kolom ----------
+   Dua-duanya pakai --feature-box-h yang sama, jadi tinggal override
+   di sini biar tinggi box tetep konsisten di semua breakpoint,
+   jumlah kolom per baris diatur manual (3 → 2 → 1) */
 @media (max-width: 900px) {
+    .program-grid,
+    .penghargaan-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     :root {
-        --feature-box-w: 240px;
         --feature-box-h: 220px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+    .program-grid,
+    .penghargaan-gallery {
+        grid-template-columns: 1fr;
+    }
+
     :root {
-        --feature-box-w: 150px;
-        --feature-box-h: 170px;
+        --feature-box-h: 200px;
     }
 
     .program-card {

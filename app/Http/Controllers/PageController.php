@@ -43,7 +43,8 @@ class PageController extends Controller
                 ];
             });
 
-        $programUnggulan = Program::latest()->take(3)->get();
+        // Program Unggulan di beranda: tampilkan 6 data (sebelumnya 3)
+        $programUnggulan = Program::latest()->take(6)->get();
 
         $galleryPenghargaan = Gallery::latest()->take(6)->get();
 

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('layouts.partials.footer', function ($view) {
-            $view->with('footerPrograms', Program::latest()->take(3)->get());
+            $view->with('footerPrograms', Program::latest()->take(4)->get());
         });
 
         View::composer('layouts.partials.nav', function ($view) {
