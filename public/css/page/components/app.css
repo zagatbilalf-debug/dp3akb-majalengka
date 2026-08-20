@@ -1,5 +1,3 @@
-
-
 *,
 *::before,
 *::after {
@@ -54,11 +52,18 @@ body {
 /* Diperluas dari h1-h6, p ke semua elemen teks umum, supaya
    konten dinamis (dari CKEditor/rich text) yang di-render di
    dalam div/span juga otomatis membungkus kata/string panjang
-   dan tidak bikin halaman overflow horizontal di mobile. */
+   dan tidak bikin halaman overflow horizontal di mobile.
+
+   Catatan: word-break: break-word sengaja DIHAPUS dari sini.
+   Properti itu terlalu agresif — di dalam layout flex/grid
+   (misal .biodata-info, .biodata-card) bikin browser mecah
+   kata pendek di tengah huruf ("Zagat" jadi "Za/ga/t") walau
+   ruang sebenarnya masih cukup. overflow-wrap + word-wrap saja
+   sudah cukup untuk mencegah overflow horizontal tanpa efek
+   samping itu. */
 h1, h2, h3, h4, h5, h6, p, span, div, li, td, th, a, label {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    word-break: break-word;
 }
 
 h1, h2, h3, h4, h5, h6, p {

@@ -62,6 +62,33 @@ class PageController extends Controller
         return view('page.contact');
     }
 
+
+    // Halaman Biodata Developer (statis, konten diisi di sini)
+    public function developerBio()
+    {
+        return view('page.biodata', [
+            'kategori' => 'DEVELOPER',
+            'jabatan'  => 'Fullstack Web Developer',
+            'nama'     => 'Zagat', // TODO: ganti sesuai nama lengkap yang mau ditampilkan
+
+            'foto'     => asset('assets/images/developer/foto.jpg'), // TODO: ganti path foto asli
+
+            'biodata'  => '
+                <p>Developer di balik website dan admin CMS DP3AKB Kabupaten Majalengka ini — dibangun dari nol pakai Laravel, mulai dari sistem autentikasi admin, tujuh modul CRUD (Berita, Agenda, Program Unggulan, Gallery Penghargaan, Laporan, Dokumen, Pengaduan), sampai integrasi Cloudinary untuk penyimpanan file dan deploy ke Railway.</p>
+                <p>TODO: ganti paragraf ini dengan cerita singkat versi kamu sendiri — pengalaman, fokus keahlian, atau apa pun yang mau ditonjolkan.</p>
+            ',
+
+            'dataDiri' => [
+                ['label' => 'Peran', 'value' => 'Fullstack Web Developer'],
+                ['label' => 'Tech Stack', 'value' => 'Laravel, PHP, MySQL, JavaScript'],
+                ['label' => 'Infrastruktur', 'value' => 'Railway, Cloudinary'],
+                ['label' => 'Proyek Ini', 'value' => 'Website & Admin CMS DP3AKB Kab. Majalengka'],
+            ],
+
+            'backUrl' => url('/'),
+        ]);
+    }
+
   
     public function beritaIndex(Request $request)
     {

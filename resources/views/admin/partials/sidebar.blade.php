@@ -3,7 +3,7 @@
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
         <div class="sidebar-logo-wrap">
-            <img src="{{ asset('assets/images/logo1.png') }}" alt="DP3AKB Majalengka" class="sidebar-logo-full">
+            <img src="{{ asset('assets/images/LOGOS.png') }}" alt="DP3AKB Majalengka" class="sidebar-logo-full">
         </div>
         <button class="sidebar-toggle-btn" id="sidebarToggleBtn" type="button" aria-label="Tutup Sidebar">
             <i class="fa-solid fa-angles-left"></i>

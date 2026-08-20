@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Public\LaporanPublicController;
 use App\Http\Controllers\Admin\DokumenController;
-use App\Http\Controllers\Admin\PengaduanController;
 use App\Http\Controllers\Admin\PesanController;
 use App\Http\Controllers\Public\PesanPublicController;
 use App\Http\Controllers\Admin\AuthController;
@@ -19,21 +18,20 @@ use App\Http\Controllers\Admin\PimpinanController;
 // Beranda & Kontak Utama
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
-
 // Route submit form kontak (publik)
 Route::post('/kontak', [PesanPublicController::class, 'store'])->name('contact.store');
+
+// Halaman Biodata Developer
+Route::get('/developer', [PageController::class, 'developerBio'])->name('developer.biodata');
 
 // Modul Berita Publik
 Route::prefix('berita')->name('berita.')->group(function () {
     Route::get('/', [PageController::class, 'beritaIndex'])->name('index');
     Route::get('/{slug}', [PageController::class, 'beritaShow'])->name('show');
 });
-
 // Modul Agenda Publik
 Route::prefix('agenda')->name('agenda.')->group(function () {
     Route::get('/', [PageController::class, 'agendaIndex'])->name('index');
-    // PENTING: route 'kalender' harus di atas '/{id}', kalau tidak Laravel akan
-    // menganggap kata 'kalender' sebagai nilai {id} dan memicu agendaShow().
     Route::get('/kalender', [PageController::class, 'agendaKalender'])->name('kalender');
     Route::get('/{id}', [PageController::class, 'agendaShow'])->name('show');
 });
@@ -81,30 +79,27 @@ Route::prefix('profile')->group(function () {
     Route::get('/uptd', [PageController::class, 'profileUptd'])->name('profile.uptd');
 });
 
-// Modul Program (menu statis Provinsi Jabar)
+
 // Modul Program (dinamis, dari database)
-Route::prefix('program')->group(function () {
+    Route::prefix('program')->group(function () {
     Route::get('/', [PageController::class, 'programIndex'])->name('program.index');
     Route::get('/{program}', [PageController::class, 'programShow'])->name('program.show');
-});
+    });
 
-// ==========================================
-// MODUL ADMIN PANEL
-// ==========================================
-Route::prefix('admin')->name('admin.')->group(function () {
+        // MODUL ADMIN PANEL
 
-    // Login admin — TIDAK pakai middleware, karena ini endpoint proses login itu sendiri
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+        Route::prefix('admin')->name('admin.')->group(function () {
 
-    // Semua route di bawah ini WAJIB login dulu (dicek via session admin_logged_in)
-    Route::middleware('admin.auth')->group(function () {
+    
+        Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+        Route::middleware('admin.auth')->group(function () {
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-        // Upload gambar dari dalam TinyMCE (konten berita)
         Route::post('/berita/upload-image', [BeritaController::class, 'uploadImage'])->name('berita.upload-image');
 
-        // Route CRUD lainnya
+       
         Route::resource('berita', BeritaController::class);
         Route::resource('agenda', AgendaController::class);
         Route::resource('program', ProgramController::class);
@@ -116,12 +111,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->only(['index', 'show', 'destroy']);
         Route::resource('pimpinan', PimpinanController::class);
 
-       // Pengaturan (index = daftar opsi, salah satunya Ubah Password)
+
 Route::get('/pengaturan', [AuthController::class, 'pengaturanIndex'])->name('pengaturan.index');
 Route::get('/pengaturan/ubah-password', [AuthController::class, 'showChangePasswordForm'])->name('pengaturan.ubah-password');
 Route::put('/pengaturan/ubah-password', [AuthController::class, 'updatePassword'])->name('pengaturan.password.update');
     });
-});
+    });
 
-// Logout admin — sengaja di luar prefix 'admin' supaya URL-nya tetap /logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

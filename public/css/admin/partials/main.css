@@ -178,8 +178,8 @@ table.data-table tbody tr:hover {
     white-space: nowrap;
 }
 
-.btn-primary { background-color: #2f6fed; color: #fff; }
-.btn-primary:hover { background-color: #245bd1; }
+.btn-primary { background-color: #810a26; color: #fff; }
+.btn-primary:hover { background-color: #810a26; }
 
 .btn-danger { background-color: #e74c3c; color: #fff; }
 .btn-danger:hover { background-color: #c0392b; }

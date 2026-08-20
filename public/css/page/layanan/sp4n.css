@@ -64,12 +64,33 @@
     font-weight: 700;
     color: #0f172a;
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .sp4n-feature-box p {
     font-size: 14px;
     color: #64748b;
     margin: 0;
+}
+
+/* Icon badge di dalam feature box */
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: rgba(225, 29, 72, 0.08);
+    color: #e11d48;
+}
+
+.feature-icon svg {
+    width: 18px;
+    height: 18px;
 }
 
 .external-link-box {
@@ -86,7 +107,9 @@
 }
 
 .btn-external {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     background-color: #e11d48;
     color: #ffffff;
     padding: 12px 24px;
@@ -100,4 +123,16 @@
 .btn-external:hover {
     background-color: #be123c;
     transform: translateY(-2px);
+}
+
+/* Icon panah di tombol */
+.btn-arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.btn-external:hover .btn-arrow {
+    transform: translateX(4px);
 }

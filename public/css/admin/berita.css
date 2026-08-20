@@ -18,17 +18,17 @@
 
 .berita-form-actions .btn-primary,
 .berita-actions .btn-primary {
-    background-color: #2f6fed !important;
+    background-color: #810a26 !important;
     color: #fff !important;
     padding: 10px 26px;
-    box-shadow: 0 3px 10px rgba(47, 111, 237, 0.25);
+    box-shadow: 0 3px 10px rgba(129, 10, 38, 0.25);
 }
 
 .berita-form-actions .btn-primary:hover,
 .berita-actions .btn-primary:hover {
-    background-color: #245bd1 !important;
+    background-color: #810a26 !important;
     transform: translateY(-1px);
-    box-shadow: 0 5px 14px rgba(47, 111, 237, 0.32);
+    box-shadow: 0 5px 14px rgba(129, 10, 38, 0.32);
 }
 
 .berita-form-actions .btn-outline,
@@ -108,11 +108,11 @@
 }
 
 .sort-link:hover {
-    color: #2f6fed;
+    color: #810a26;
 }
 
 .sort-link.is-active {
-    color: #2f6fed;
+    color: #810a26;
     font-weight: 700;
 }
 
@@ -124,7 +124,7 @@
 
 .sort-link:hover .sort-icon,
 .sort-link.is-active .sort-icon {
-    color: #2f6fed;
+    color: #810a26;
 }
 
 /* ===========================================================
@@ -189,9 +189,9 @@
 
 .berita-form .form-control:focus {
     outline: none;
-    border-color: #2f6fed;
+    border-color: #810a26;
     background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.12);
+    box-shadow: 0 0 0 4px rgba(129, 10, 38, 0.12);
 }
 
 
@@ -232,7 +232,7 @@
 }
 
 .berita-form input[type="file"]:hover {
-    border-color: #2f6fed;
+    border-color: #810a26;
     background-color: #f0f5ff;
 }
 
@@ -241,7 +241,7 @@
     margin-right: 14px;
     border: none;
     border-radius: 7px;
-    background-color: #2f6fed;
+    background-color: #810a26;
     color: #fff;
     font-size: 13px;
     font-weight: 600;
@@ -250,7 +250,7 @@
 }
 
 .berita-form input[type="file"]::file-selector-button:hover {
-    background-color: #245bd1;
+    background-color: #810a26;
 }
 
 /* ===========================================================
@@ -299,8 +299,8 @@
 }
 
 .ck.ck-editor__editable.ck-focused {
-    border-color: #2f6fed !important;
-    box-shadow: 0 0 0 4px rgba(47, 111, 237, 0.12) !important;
+    border-color: #810a26 !important;
+    box-shadow: 0 0 0 4px rgba(129, 10, 38, 0.12) !important;
 }
 
 /* ===========================================================
