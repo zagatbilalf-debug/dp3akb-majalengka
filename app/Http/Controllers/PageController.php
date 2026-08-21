@@ -300,4 +300,9 @@ class PageController extends Controller
         ]);
     }
 
+     public function biodata()
+    {
+        return view('page.biodata');
+    }
+
 }

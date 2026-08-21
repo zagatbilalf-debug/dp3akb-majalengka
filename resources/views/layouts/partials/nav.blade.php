@@ -79,6 +79,9 @@
         <div class="nav-item">
             <a href="{{ url('/kontak') }}">Kontak</a>
         </div>
+          <div class="nav-item">
+            <a href="{{ url('biodata') }}">Biodata</a>
+        </div>
 
         <div class="nav-item mobile-login-container">
             <button class="mobile-admin-trigger-btn" id="openAdminMobile">

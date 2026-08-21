@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\PimpinanController;
 // Beranda & Kontak Utama
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/kontak', [PageController::class, 'contact'])->name('contact');
+Route::get('/biodata', [PageController::class, 'biodata'])->name('biodata');
 // Route submit form kontak (publik)
 Route::post('/kontak', [PesanPublicController::class, 'store'])->name('contact.store');
 // Modul Berita Publik
